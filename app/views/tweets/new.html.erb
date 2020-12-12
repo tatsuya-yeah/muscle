@@ -1,0 +1,36 @@
+<h1>投稿</h1>
+<%= form_for @tweet do |f| %>
+    <div class="field">
+        <%= f.label :名前 %>
+        <%= f.text_field :name, :size => 30 %>
+    </div>
+    <div class="field">
+        <%= f.label :部位 %>
+        <%= f.select :part,
+        [["腹筋", "1"],
+        ["肩", "2"]], include_blank: "選択して下さい" %>
+        
+    </div>
+    <div class="field">
+        <%= f.label :種目 %>
+        <%= f.text_field :training, :size => 30 %>
+    </div>
+    <div class="field">
+        <%= f.label :感想 %>
+        <%= f.text_field :about, :size => 30 %>
+    </div>
+    <div class="field">
+         <%= f.label :画像 %>
+         <%= f.file_field :image %>
+    </div>
+    <div class="field">
+    <%= f.label :動画 %>
+    <%= f.file_field :video %>
+    </div>
+  <%= f.submit "Tweetする" %>
+<% end %>
+
+
+
+
+<%= link_to "投稿一覧に戻る", tweets_path %>
