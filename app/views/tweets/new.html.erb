@@ -1,14 +1,10 @@
 <h1>投稿</h1>
 <%= form_for @tweet do |f| %>
     <div class="field">
-        <%= f.label :名前 %>
-        <%= f.text_field :name, :size => 30 %>
-    </div>
-    <div class="field">
         <%= f.label :部位 %>
         <%= f.select :part,
-        [["腹筋", "1"],
-        ["肩", "2"]], include_blank: "選択して下さい" %>
+        [["腹筋", "腹筋"],
+        ["肩", "肩"]], include_blank: "選択して下さい" %>
         
     </div>
     <div class="field">

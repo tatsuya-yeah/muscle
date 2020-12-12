@@ -5,10 +5,9 @@
               <%= link_to "マイページへ", user_path(current_user.id) %>　
             <% end %>
     <% @tweets.each do |t| %>
-        <div class="tweet">
+        <div class="tweet1">
             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
             <%= t.name %>
-            <%= t.user.email %>
             <%= t.part %>
             <%= t.training %>
             <%= t.about %>
