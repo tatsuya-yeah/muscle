@@ -1,6 +1,6 @@
 <h1>プロフィール</h1>
 <p>名前 : <%= @user.name %></p>
-<p>ユーザー画像　：　<%= @user.image %></p>
+<p>ユーザー画像 ： <%= image_tag @user.image_url %></p>
 <p>メールアドレス : <%= @user.email %></p>
 <p>みんなにひとこと : <%= @user.profile %></p>
 
@@ -19,6 +19,11 @@
 <% @user.liked_tweets.each do |t| %>
   <%= t.user.name %>
   <%= t.about %>
+<% end %>
+
+<h2>フォロー中のユーザー<h2>
+<% @user.followings.each do |t| %>
+  <%= t.name %>
 <% end %>
 
 <% if @user.id == current_user.id %>
