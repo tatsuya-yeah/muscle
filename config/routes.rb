@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
+  resources :relationships, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'hello#index'
 
   resources :tweets do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
-    resources :relationships, only: [:create, :destroy]
   end
 end
