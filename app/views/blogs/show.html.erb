@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>トレーニング</strong>
+    <%= @blog.training %>
+</p>
+
+<p>
+    <strong>時間</strong>
+    <%= @blog.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+    <strong>感想</strong>
+    <%= @blog.about %>
+</p>
+
+<%= link_to '記録を編集する', edit_blog_path(@blog) %> |
+<%= link_to '筋トレカレンダーに戻る', blogs_path %>

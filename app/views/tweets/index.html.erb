@@ -1,12 +1,16 @@
 <h1>投稿一覧</h1>
-<%= link_to "新規投稿へ", new_tweet_path %>
+<%= link_to "おすすめを投稿", new_tweet_path %>
+<%= link_to "今日の筋トレ投稿", new_blog_path %>
+<%= link_to "筋トレカレンダー", blogs_path %>
 <%= page_entries_info @tweets %>
 <div class="tweets-container">
             <% if user_signed_in? %>
               <%= link_to "プロフィール", user_path(current_user.id) %>　
             <% end %>
+            <h1>おすすめの投稿一覧</h1>
     <% @tweets.each do |t| %>
         <div class="tweet1">
+            
             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
             <%= t.name %>
             <%= t.part %>
@@ -27,14 +31,13 @@
             <% else %>
                 <i class="fas fa-heart"></i><%= t.likes.count %>
             <% end %>
-            
+            </div>     
             <%= t.created_at %>
             <%= link_to "詳細へ", tweet_path(t.id) %>
             <% if user_signed_in? && current_user.id == t.user_id %>  
             <%= link_to "編集する", edit_tweet_path(t.id) %>
             <%= link_to "削除する", tweet_path(t.id), method: :delete %>
             <% end %> 
-        </div>
     <% end %>
     <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
 </div>

@@ -1,0 +1,30 @@
+<%= form_with(model: @blog, local: true) do |f| %>
+
+    <div class="field">
+        <%= f.label :部位 %>
+        <%= f.select :part,
+            [["腹筋", "腹筋"],
+            ["肩", "肩"]], include_blank: "選択して下さい" %>
+    </div>
+
+        <div class="field">
+        <%= f.label :種目 %>
+        <%= f.text_field :training, :size => 30 %>
+    </div>
+
+    <div class="field">
+        <%= f.label :感想 %>
+        <%= f.text_field :about, :size => 30 %>
+    </div>
+
+    <div class="time">
+        <%= f.label :トレーニング日 %>
+        <%= f.datetime_select :start_time %>
+    </div>
+
+
+    <div class="submit">
+        <%= f.submit %>
+    </div>
+
+<% end %>
