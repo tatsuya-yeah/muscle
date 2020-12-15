@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :rooms, :only => [:create, :show, :index]
   resources :relationships, only: [:create, :destroy]
   resources :blogs
+  resources :fronts, :only => [:index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'hello#index'
 

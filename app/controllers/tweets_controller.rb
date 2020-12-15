@@ -15,6 +15,7 @@ class TweetsController < ApplicationController
         tweet.user_id = current_user.id
         
         if tweet.save
+            flash[:notice] = '投稿が完了しました。'
             redirect_to :action => "index"
         else 
             redirect_to :action => "new"
