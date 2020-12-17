@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
+<div class="blog">
+<p>
+    <strong>ユーザー名</strong>
+    <%= @blog.name %>
+</p>
 
 <p>
     <strong>トレーニング</strong>
@@ -14,6 +19,26 @@
     <strong>感想</strong>
     <%= @blog.about %>
 </p>
+
+<% if user_signed_in? %>
+<% if current_user.already_loved?(@blog) %>
+    <%= link_to blog_love_path(@blog), method: :delete do %>
+        <i class="fas fa-heart"></i><%= @blog.loves.count %>
+    <% end %>
+<% else %>
+    <%= link_to blog_loves_path(@blog), method: :post do %>
+        <i class="fas fa-heart"></i><%= @blog.loves.count %>
+    <% end %>
+<% end %>
+<% else %>
+<i class="fas fa-heart"></i><%= @blog.loves.count %>
+<% end %>
+
+</div>
+<h2>いいねしたユーザー</h2>
+<% @blog.loved_users.each do |user| %>
+    <li><%= user.email %></li>
+<% end %>
 
 <%= link_to '記録を編集する', edit_blog_path(@blog) %> |
 <%= link_to '筋トレカレンダーに戻る', blogs_path %>

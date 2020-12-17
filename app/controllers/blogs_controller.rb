@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
 
+    before_action :authenticate_user!
+
     def index
         @blogs = Blog.all
     end
@@ -8,18 +10,26 @@ class BlogsController < ApplicationController
         @blog = Blog.new
     end
     
+    
+    def create
+        blog = Blog.new(blog_parameter)
+        blog.user_id = current_user.id
+        
+        if blog.save
+            flash[:notice] = '投稿が完了しました。'
+            redirect_to :action => "index"
+        else 
+            redirect_to :action => "new"
+        end
+    end
+
     def show
         @blog = Blog.find(params[:id])
     end
     
-    def create
-        Blog.create(blog_parameter)
-        redirect_to blogs_path
-    end
-    
     def destroy
-        @blog = Blog.find(params[:id])
-        @blog.destroy
+        blog = Blog.find(params[:id])
+        blog.destroy
         redirect_to blogs_path, notice:"削除しました"
     end
     
@@ -28,11 +38,11 @@ class BlogsController < ApplicationController
     end
     
     def update
-        @blog = Blog.find(params[:id])
-        if @blog.update(blog_parameter)
-    redirect_to blogs_path, notice: "編集しました"
+        blog = Blog.find(params[:id])
+        if blog.update(blog_parameter)
+            redirect_to :action => "show", :id => blog.id
         else
-    render 'edit'
+            redirect_to :action => "new"
         end
     end
     

@@ -27,6 +27,10 @@ class User < ApplicationRecord
 
           mount_uploader :image, ImageUploader
 
+          has_many :blogs, dependent: :destroy
+          has_many :loves, dependent: :destroy
+          has_many :loved_tweets, through: :loves, source: :blog
+
           def already_liked?(tweet)
             self.likes.exists?(tweet_id: tweet.id)
           end
@@ -45,5 +49,8 @@ class User < ApplicationRecord
         def following?(other_user)
           self.followings.include?(other_user)
         end
-        
+
+        def already_loved?(blog)
+          self.loves.exists?(blog_id: blog.id)
+        end
 end

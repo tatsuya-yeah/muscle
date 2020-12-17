@@ -11,33 +11,26 @@
     </tr>
   </thead>
 
-  <tbody>
+  <body>
     <% @blogs.each do |blog| %>
       <tr>
         <td><%= blog.part %></td>
         <td><%= blog.start_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to '詳細へ', blog_path(blog.id) %></td>
         <td><%= link_to '編集する', edit_blog_path(blog.id) %></td>
-        <td><%= link_to '削除する',blog_path(blog.id), method: :delete, data: { confirm: '筋トレ記録を消しますか?' } %></td>
+        <td><%= link_to '削除する',blog_path(blog.id), method: :delete, data: { confirm: '筋トレ記録を削除しますか?' } %></td>
       </tr>
     <% end %>
-  </tbody>
+  </body>
 </table>
-
 <br>
+
+
 
 <%= link_to '筋トレを記録する', new_blog_path %>
 
-<%= month_calendar events: @blogs do |date, blogs| %>
-  <%= date.day %>
 
-  <% blogs.each do |blog| %>
-    <div>
-      <%= link_to blog.part, blog %>
-    </div>
-  <% end %>
-<% end %>
-<%= link_to "マイページへ", fronts_path %>
+
 
 
 
