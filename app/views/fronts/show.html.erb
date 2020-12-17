@@ -1,0 +1,23 @@
+<h1>マイページ</h1>
+<%= link_to "おすすめ投稿をする", new_tweet_path %>
+<%= link_to "みんなのおすすめ投稿をみる", tweets_path %>
+<%= link_to "今日の筋トレを記録する", new_blog_path %>
+<%= link_to "みんなの今日の筋トレ記録をみる", blogs_path %>
+<%= link_to "おうちトレーニー一覧へ", users_path %>
+<%= link_to "マイプロフィール", user_path(current_user.id) %>　
+
+
+<% if current_user.id == @user.id %>
+<%= month_calendar events: @blogs do |date, blogs| %>
+    <%= date.day %>
+
+    <% blogs.each do |blog| %>
+    <div>
+        <%= link_to blog.part, blog %>
+    </div>
+    <% end %>
+<% end %>
+<% end %>
+
+
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
