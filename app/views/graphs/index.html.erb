@@ -1,0 +1,10 @@
+<% @graphs.each do |t| %>
+    <tr>
+      <td><a href="/users/<%= t.user.id %>"><%= t.user.name %></a><td>
+      <td><%= t.weight %></td>
+      <td><%= t.weigh_on.strftime("%Y-%m-%d ") %></td>
+      <td><%= link_to '編集する', edit_graph_path(t.id) %></td>
+      <td><%= link_to '削除する',graph_path(t.id), method: :delete, data: { confirm: '体重管理をやめますか?' } %></td>
+    </tr>
+  <% end %>
+<%= link_to "マイページへ", front_path(id: current_user) %>

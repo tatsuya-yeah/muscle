@@ -5,6 +5,7 @@
 <%= link_to "みんなの今日の筋トレ記録をみる", blogs_path %>
 <%= link_to "おうちトレーニー一覧へ", users_path %>
 <%= link_to "マイプロフィール", user_path(current_user.id) %>　
+<%= link_to "体重管理をする", new_graph_path %>
 
 
 <% if current_user.id == @user.id %>
@@ -18,6 +19,14 @@
     <% end %>
 <% end %>
 <% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>あなたの体重推移</h1>
+
+<%= line_chart @sample %>
+
+
 
 
 <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>

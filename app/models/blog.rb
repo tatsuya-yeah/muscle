@@ -3,5 +3,6 @@ class Blog < ApplicationRecord
     belongs_to :user
     has_many :loves, dependent: :destroy
     has_many :loved_users, through: :loves, source: :user
+    has_many :supports, dependent: :destroy
     
 end

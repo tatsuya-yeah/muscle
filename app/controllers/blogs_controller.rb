@@ -25,6 +25,8 @@ class BlogsController < ApplicationController
 
     def show
         @blog = Blog.find(params[:id])
+        @supports = @blog.supports
+        @support = Support.new
     end
     
     def destroy

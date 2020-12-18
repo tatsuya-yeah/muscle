@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weight: 1
+  weigh_on: 2020-12-17
+  name: MyString
+
+two:
+  weight: 1
+  weigh_on: 2020-12-17
+  name: MyString

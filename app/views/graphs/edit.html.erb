@@ -1,0 +1,14 @@
+<h1>体重管理の編集</h1>
+<%= form_for @graph do |f| %>
+
+<div class="field">
+    <%= f.label :体重%>
+    <%= f.text_field :weight %>
+</div>
+
+<div class="time">
+<%= f.label :今日の日付%>
+<%= f.datetime_select :weigh_on %>
+</div>
+<%= f.submit "編集する" %>
+<% end %>

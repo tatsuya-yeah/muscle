@@ -1,6 +1,6 @@
 <h1>おうちトレーニー</h1>
 <% if user_signed_in? %>
-<%= link_to " マイページへ",front_path  %>
+<%= link_to " マイページへ",front_path(id: current_user)  %>
 <h2><%= current_user.name %>さん、こんにちは</h2>
   <% @users.each do |u| %>
   <p><a href="/users/<%= u.id %>"><%= u.name %>さん</a></p>
