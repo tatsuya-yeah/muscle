@@ -2,6 +2,7 @@ class GraphsController < ApplicationController
 
     def index
         @graphs = Graph.all
+        @result = Graph.pluck(:weigh_on, :weight)
     end
 
     def show

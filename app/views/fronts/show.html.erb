@@ -24,9 +24,7 @@
 
 <h1>あなたの体重推移</h1>
 
-<%= line_chart @sample %>
-
-
+<%= line_chart @result, xtitle: "日付", ytitle: "体重",max:100 %>
 
 
 <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
