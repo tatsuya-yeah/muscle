@@ -1,11 +1,18 @@
 <h1>投稿</h1>
 <h2>ツイート詳細</h2>
 <div class="detail">
+    <p><%= @tweet.title %></p>
     <p><%= @tweet.about %></p>
     <p><%= @tweet.part %></p>
     <p><%= @tweet.training %></p>
     <p><%= @tweet.about %></p>
     <p><%= @tweet.created_at %></p>
+    <p>
+      <strong>Youtube url:</strong>
+      <iframe width="200" height="100" src="https://www.youtube.com/embed/
+      <%= @tweet.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; 
+      encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </p>
     <% if user_signed_in? %>
     <% if current_user.already_liked?(@tweet) %>
         <%= link_to tweet_like_path(@tweet), method: :delete do %>
@@ -48,6 +55,6 @@
   <% end %>
 </div>  
     <%= link_to "編集する", edit_tweet_path(@tweet.id) %>
- <%= link_to "Tweet一覧に戻る", tweets_path %>
+ <%= link_to "おすすめ投稿一覧に戻る", tweets_path %>
  
 

@@ -1,5 +1,10 @@
 <h1>おすすめを投稿</h1>
 <%= form_for @tweet do |f| %>
+
+    <div class="field">
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, :size => 30 %>
+    </div>
     <div class="field">
         <%= f.label :部位 %>
         <%= f.select :part,
@@ -13,18 +18,18 @@
         <%= f.text_field :training, :size => 30 %>
     </div>
     <div class="field">
-        <%= f.label :感想 %>
+        <%= f.label :内容 %>
         <%= f.text_field :about, :size => 30 %>
     </div>
     <div class="field">
-         <%= f.label :画像 %>
-         <%= f.file_field :image %>
+        <%= f.label :画像 %>
+        <%= f.file_field :image %>
     </div>
     <div class="field">
-    <%= f.label :動画 %>
-    <%= f.file_field :video %>
+        <%= f.label :動画 %>
+        <%= f.url_field :youtube_url %>
     </div>
-  <%= f.submit "投稿する" %>
+    <%= f.submit "投稿する" %>
 <% end %>
 
 

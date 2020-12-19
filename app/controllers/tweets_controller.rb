@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @tweets =Tweet.all.page(params[:page]).per(3)
+        @tweets =Tweet.all.page(params[:page]).per(5)
+        @all_ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(5).pluck(:tweet_id))
     end
 
     def new 
@@ -12,6 +13,11 @@ class TweetsController < ApplicationController
 
     def create
         tweet = Tweet.new(tweet_params)
+        @tweet = Tweet.new(tweet_params)
+        url = params[:tweet][:youtube_url]
+        url = url.last(11)
+        @tweet.youtube_url = url
+
         tweet.user_id = current_user.id
         
         if tweet.save
@@ -50,7 +56,7 @@ class TweetsController < ApplicationController
 
     private
     def tweet_params
-        params.require(:tweet).permit(:name, :part, :training, :about, :image, :video)
+        params.require(:tweet).permit(:name, :part, :training, :about, :image, :youtube_url,:title)
     end
 
    

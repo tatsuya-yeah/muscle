@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_062727) do
+ActiveRecord::Schema.define(version: 2020_12_18_143441) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 2020_12_18_062727) do
     t.integer "user_id"
     t.string "image"
     t.string "video"
+    t.string "youtube_url"
+    t.string "title"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
