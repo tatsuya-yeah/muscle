@@ -2,7 +2,7 @@
 <div class="blog">
 <p>
     <strong>ユーザー名</strong>
-    <%= @blog.name %>
+    <%= @blog.user.name %>
 </p>
 
 <p>
@@ -11,7 +11,7 @@
 </p>
 
 <p>
-    <strong>時間</strong>
+    <strong>日付</strong>
     <%= @blog.start_time.strftime("%Y-%m-%d %H:%M") %>
 </p>
 

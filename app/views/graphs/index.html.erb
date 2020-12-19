@@ -8,6 +8,6 @@
     </tr>
   <% end %>
 
-<%= line_chart @result, xtitle: "日付", ytitle: "体重",max:100 %>
+<%= line_chart @my_result, xtitle: "日付", ytitle: "体重",max:100 %>
 
 <%= link_to "マイページへ", front_path(id: current_user) %>

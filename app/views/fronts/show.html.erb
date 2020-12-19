@@ -6,10 +6,11 @@
 <%= link_to "おうちトレーニー一覧へ", users_path %>
 <%= link_to "マイプロフィール", user_path(current_user.id) %>　
 <%= link_to "体重管理をする", new_graph_path %>
+<%= link_to "マッチョ診断をする", new_person_path %>
 
 
-<% if current_user.id == @user.id %>
-<%= month_calendar events: @blogs do |date, blogs| %>
+
+<%= month_calendar events: @my_blogs do |date, blogs| %>
     <%= date.day %>
 
     <% blogs.each do |blog| %>
@@ -18,13 +19,12 @@
     </div>
     <% end %>
 <% end %>
-<% end %>
 
 <p id="notice"><%= notice %></p>
 
 <h1>あなたの体重推移</h1>
 
-<%= line_chart @result, xtitle: "日付", ytitle: "体重",max:100 %>
+<%= line_chart @my_result, xtitle: "日付", ytitle: "体重",max:100 %>
 
 
 <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>

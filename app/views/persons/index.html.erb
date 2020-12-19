@@ -1,0 +1,6 @@
+<% @person.each do |t| %>
+    <%= t.height %>
+    <%= t.weight %>
+<% end %>
+
+<%= link_to "マイページへ", front_path(id: current_user) %>

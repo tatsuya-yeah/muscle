@@ -3,6 +3,7 @@ class GraphsController < ApplicationController
     def index
         @graphs = Graph.all
         @result = Graph.pluck(:weigh_on, :weight)
+        @my_result = @result.select{ |graph| graph.user_id == current_user.id }
     end
 
     def show

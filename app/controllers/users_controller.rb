@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :only => [:show]
+
     def index
-      @users = User.all
+      if params[:search] == nil
+        @users= User.all
+      elsif params[:search] == ''
+        @users= User.all
+      else
+        @users = User.where("name LIKE ? ",'%' + params[:search] + '%')
+      end
     end
 
     def show

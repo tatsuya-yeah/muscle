@@ -16,6 +16,7 @@
       <tr>
         <td><a href="/users/<%= blog.user.id %>"><%= blog.user.name %></a><td>
         <td><%= blog.part %></td>
+        <td><%= blog.training %></td>
         <td><%= blog.start_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to '詳細へ', blog_path(blog.id) %></td>
         <td><%= link_to '編集する', edit_blog_path(blog.id) %></td>

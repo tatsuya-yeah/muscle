@@ -2,10 +2,14 @@
 <% if user_signed_in? %>
 <%= link_to " マイページへ",front_path(id: current_user)  %>
 <h2><%= current_user.name %>さん、こんにちは</h2>
-  <% @users.each do |u| %>
+<h3>おうちトレーニーを検索</h3>
+ <%= form_tag({controller:"users",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+<% @users.each do |u| %>
   <p><a href="/users/<%= u.id %>"><%= u.name %>さん</a></p>
-  <hr>
-  <% end %>
+<% end %>
 <% else %>
   <%= link_to "ユーザーを登録する", new_user_registration_path %>
   <br>
