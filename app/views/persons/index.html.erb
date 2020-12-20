@@ -1,6 +1,10 @@
-<% @person.each do |t| %>
+<% @persons.each do |t| %>
+    <%= t.weight %>  
     <%= t.height %>
-    <%= t.weight %>
 <% end %>
+
+<p>あなたのBMIは<%=@BMI %>です</p>
+
+
 
 <%= link_to "マイページへ", front_path(id: current_user) %>

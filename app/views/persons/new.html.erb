@@ -1,16 +1,18 @@
+<h1>BMI計算</h1>
 <%= form_with(model: @person, local: true) do |f| %>
 
-<div class="field">
-    <%= f.label :身長 %>
-    <%= f.text_field :height, :size => 30 %>
-</div>
+    <div class="field">
+        <%= f.label :体重 %>
+        <%= f.text_field :weight, :size => 30 %>
+    </div>
 
-<div class="field">
-    <%= f.label :体重 %>
-    <%= f.text_field :weight, :size => 30 %>
-</div>
+    <div class="field">
+        <%= f.label :身長 %>
+        <%= f.text_field :height, :size => 30 %>
+    </div>
 
-    <%= f.submit "マッチョ診断開始" %>
-
-
+    <div class="submit">
+        <%= f.submit %>
+    </div>
+    
 <% end %>
