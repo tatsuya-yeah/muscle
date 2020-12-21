@@ -1,6 +1,101 @@
+<link rel="stylesheet" href="stylesheets/hello.css">
+
 <% if user_signed_in? %>
-<li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
 <% else %>
-<li><%= link_to "新規登録", new_user_registration_path %></li>
-<li><%= link_to "ログイン", tweets_path %></li>
+    <header>
+        <div class="header-right">
+            <a class="menubutton" id="menubutton">
+                <div></div>
+                <div></div>
+                <div></div>
+            </a>
+        </div>
+
+        <div class="menu" id="menu">
+            <ul class="menu-box">
+                <li class="sighup1"><a href=""><%= link_to "新規登録", new_user_registration_path %></a></li>
+                <li class="login1"><a href=""><%= link_to "ログイン", tweets_path %></a></li>
+                <li><a href="#feature">機能紹介</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="mask" id="mask"></div>
+
+    <div class="top-wrapper">
+            <div class="container">
+                <h1>Road to the Strongest<br> Home Trainee</h1>
+                <p>あなたがお家で行っている筋トレやってる感を
+                盛大に演出するおうちトレーニー専用のサービス。</p>
+            </div>
+    </div>
+    <div id="feature">
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="function">
+                <img src="" alt="">
+                <h2><i class="far fa-calendar-alt"></i>その日のトレーニングをカレンダーで記録</h2>
+                <p>その日行ったあなたの筋トレを投稿すれば、自動でカレンダーに登録してくれます。
+                これでもうあなたの努力が消えることはありません。
+                </p>
+            </div>
+            <div class="function">
+                <h2><i class="far fa-male"></i>あなたはどんな体型？体型診断搭載！</h2>
+                <p>身長と体重、体脂肪率を入力するだけで、BMIと体脂肪率から、
+                    あなたがどんな体型なのか診断します。</p>
+            </div>
+            <div class="fuction">
+                <h2><i class="far fa-calendar"></i>日々の成果を体重推移で目に見えるように</h2>
+                <p>体重を入力するだけで体重増減をグラフ化！
+                    あなたの努力をグラフ化します。
+                </p>
+            </div>
+            <div class="function">
+                <h2><i class="far fa-comment-dots"></i>おすすめの筋トレ投稿機能</h2>
+                <p>ユーザーがおすすめの筋トレ動画や器具を投稿して、
+                    みんなでシェア。これであなたのおうち筋トレの効率をアップさせます。</p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-wrapper">
+        <div class="container">
+            <div class="other">
+                <h3><i class="far fa-heart"></i>いいね</h3>
+                <p>「いいね」でユーザーの筋トレモチベを上げよう。</p>
+            </div>
+            <div class="other">
+                <h3><i class="far fa-handshake"></i>フォロー</h3>
+                <p>気になるおうちトレーニーをフォローして、
+                　　みんなの日々の筋トレをチェック。</p>
+            </div>
+            <div class="other">
+                <h3><i class="far fa-comment"></i>コメント</h3>
+                <p>投稿に対して「コメント」をして、
+                    応援したり、アドバイスしたりしよう。
+                </p>
+            </div>
+            <div class="other">
+                <h3><i class="far fa-thumbs-up"></i>おすすめ筋トレランキング</h3>
+                <p>おすすめ筋トレ投稿のいいね数で人気の筋トレ投稿をチェック。</p>
+            </div>
+            <div class="other">
+                <h3><i class="far fa-comments"></i>DM機能</h3>
+                <p>気になるおうちトレーニーにDMを送って、更に仲良くなろう。</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+        <div class="start-wrapper">
+            <div class="container">
+                <h2><i class="fas fa-dumbbell"></i>さあ、最強のおうちトレーニーになろう。</h2>
+                <ul class="start">
+                    <li class="sighup2"><i class="far fa-check-circle"></i><%= link_to "新規登録", new_user_registration_path %></li>
+                    <li class="login2"><i class="fas fa-pen"></i><%= link_to "ログイン", tweets_path %></li>
+                </ul>
+            </div>
+        </div>
+
+
+
 <% end %>

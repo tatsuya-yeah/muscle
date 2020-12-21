@@ -34,6 +34,8 @@ class User < ApplicationRecord
 
           has_many :graphs
 
+          
+
           def already_liked?(tweet)
             self.likes.exists?(tweet_id: tweet.id)
           end

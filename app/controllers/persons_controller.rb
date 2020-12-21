@@ -1,13 +1,13 @@
 class PersonsController < ApplicationController
 
     def index
-        @persons = Person.all
 
-        weight = params[:weight].to_f
-        height1 = params[:height].to_f
-        height2 = height1 / 100
-    
-        @BMI = (weight / (height2 ** 2)).round(2) 
+        @person = User.find(current_user.id)
+        @BMI = (@person.weight / @person.height ** 2)
+
+    end
+
+    def show
     end
 
     def new
