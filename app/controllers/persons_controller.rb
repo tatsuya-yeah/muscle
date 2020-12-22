@@ -2,8 +2,8 @@ class PersonsController < ApplicationController
 
     def index
 
-        @person = User.find(current_user.id)
-        @BMI = (@person.weight / @person.height ** 2)
+        @person = Person.find_by(user_id:current_user.id)
+        @BMI = (@person.weight.to_f / @person.height.to_f ** 2)
 
     end
 

@@ -34,6 +34,10 @@ class User < ApplicationRecord
 
           has_many :graphs
 
+          has_many :persons
+
+
+
           
 
           def already_liked?(tweet)

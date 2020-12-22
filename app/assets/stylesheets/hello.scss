@@ -52,41 +52,130 @@ header {
 }
 .menu.active{
     position: fixed;
+    background-color: #fff;
     top: 0;
     left: 0;
-    opacity: 1;
     z-index: 1;
-    visibility: visible;
     transition: .5s;
-    background-color: #fff;
-    width: 100vw;
-    height: 40vh;
+    width: 30vw;
+    height: 80vh;
     padding-top: 15vh;
-
+    transform: translateX(0);
+    .menu-box1 {
     li {
         font-size: 30px;
         padding-bottom: 20px;
         display: table;
-        margin: 0 auto;
         cursor: pointer;
+        padding-left: 3vw;
         }
         li:hover {
             opacity: .5;
-            transform: scale(1.3);
+            transform: scale(1.1);
         }
- }
+    }
+    .menu-box2 {
+        li {
+            font-size: 15px;
+            padding-bottom: 10px;
+            cursor: pointer;
+            padding-left: 3vw;
+        }
+        li:hover {
+            opacity: .5;
+            transform: scale(1.1);
+        }
+    }
+}
     .menu {
-        opacity: 0;
-        visibility: hidden;
-  }
+        padding-top: 15vh;
+        transform: translateX(-30vw);
+        .menu-box1 {
+        li {
+            font-size: 30px;
+            padding-bottom: 20px;
+            display: table;
+            padding-left: 3vh;
+        }
+        }
+        .menu-box2 {
+            li {
+                font-size: 15px;
+                padding-bottom: 10px;
+                padding-left: 3vw;  
+            }
+        }
 
-.top-wrapper {
+    }
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+}
+.mask.active {
+    opacity: .5;
+    visibility: visible;
+}
 
+.top-wrapper { 
+        
     h1 {
         font-size: 80px;
         font-family: 'Permanent Marker', cursive;
         font-weight: normal;
-        
+        span {
+            color: red;
+        }
     }
+    .animation-picture1  {
+        background-image: url(/assets/cropBO15103017151030175471.jpg);
+        width: 65vw;
+        height: 55vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-left: 35vw;   
+        margin-top: 10vh;  
+      
+    }
+    .animation-picture2  {
+        background-image: url(/assets/anastase-maragos-fG0p4Qh_aWI-unsplash.jpg);
+        width: 35vw;
+        height: 40vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+.animation-target{
+    position: relative;
+}
+.animation-target::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
 
+
+@keyframes showmask {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.animation-target.show::before {
+    animation: showmask 1.8s forwards;
 }
