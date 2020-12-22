@@ -5,16 +5,15 @@
 
 
 header {
-    z-index: 2;
+    background-color: red;
+    z-index: 3;
     position: fixed;
     top: 0;
     left: 0;
     height: 70px;
     width: 100%;
-    background-color: red;
     .header-right {
         .menubutton {
-            z-index: 3;
             display: block;
             height: 30px;
             width: 30px;
@@ -37,6 +36,10 @@ header {
                 transform: translate(-50%, 11px);
             }
         }
+        .menubutton.active {
+            background-color: #fff;
+            z-index: 3;
+        }
         .menubutton.active div:nth-of-type(2) {
             opacity: 0;
         }
@@ -53,15 +56,19 @@ header {
 .menu.active{
     position: fixed;
     background-color: #fff;
+    opacity: .9;
     top: 0;
     left: 0;
     z-index: 1;
     transition: .5s;
     width: 30vw;
-    height: 80vh;
+    height: 100vh;
     padding-top: 15vh;
+    box-shadow: #ccc 0 0 10px 5px;
     transform: translateX(0);
     .menu-box1 {
+        opacity: 1;
+        visibility: visible;
     li {
         font-size: 30px;
         padding-bottom: 20px;
@@ -75,6 +82,8 @@ header {
         }
     }
     .menu-box2 {
+        opacity: 1;
+        visibility: visible;
         li {
             font-size: 15px;
             padding-bottom: 10px;
@@ -91,6 +100,8 @@ header {
         padding-top: 15vh;
         transform: translateX(-30vw);
         .menu-box1 {
+            opacity: 0;
+            visibility: hidden;
         li {
             font-size: 30px;
             padding-bottom: 20px;
@@ -99,6 +110,8 @@ header {
         }
         }
         .menu-box2 {
+            opacity: 0;
+            visibility: hidden;
             li {
                 font-size: 15px;
                 padding-bottom: 10px;
@@ -117,36 +130,56 @@ header {
     opacity: 0;
     visibility: hidden;
     transition: .5s;
+    z-index: 2;
 }
 .mask.active {
-    opacity: .5;
+    opacity: .8;
     visibility: visible;
 }
 
 .top-wrapper { 
-        
+    position: relative;
+    .top-wrapper-theme1 {
+        z-index: 1;
+        position: absolute; 
+        top: 13vh;
+        left: 10vw;
+    }
     h1 {
         font-size: 80px;
-        font-family: 'Permanent Marker', cursive;
-        font-weight: normal;
-        span {
-            color: red;
+        font-weight: bold;
+        color: red;
+        .span1 {
+            color: #111;
+            display: inline-block;
+            padding-left: 50px;
         }
+        .span2 {
+            color: red;
+            display: inline-block;
+            padding-left: 100px;
+        }
+    }
+    .top-wrapper-theme2 {
+        font-size: 30px;
+        position: absolute;
+        top: 50vh;
+        left: 68vw;
+        z-index: 1;
     }
     .animation-picture1  {
         background-image: url(/assets/cropBO15103017151030175471.jpg);
-        width: 65vw;
-        height: 55vh;
+        width: 35vw;
+        height: 40vh;
         background-size: cover;
         background-repeat: no-repeat;
-        margin-left: 35vw;   
+        margin-left: 65vw;   
         margin-top: 10vh;  
-      
     }
     .animation-picture2  {
         background-image: url(/assets/anastase-maragos-fG0p4Qh_aWI-unsplash.jpg);
-        width: 35vw;
-        height: 40vh;
+        width: 65vw;
+        height: 60vh;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -170,12 +203,87 @@ header {
 
 @keyframes showmask {
     0% {
-        transform: translateX(0);
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    80% {
+        transform: translateY(100%);
+        opacity: 1;
+        visibility: visible;
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateY(100%);
+        visibility: visible;
+        opacity: 0;
     }
 }
 .animation-target.show::before {
     animation: showmask 1.8s forwards;
+}
+
+@keyframes move1 {
+    0% {
+        opacity: 0;
+        transform: translateX(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.top-wrapper-theme1.show {
+    animation: move1 2s ;
+}
+
+@keyframes move2 {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.top-wrapper-theme2.show {
+    animation: move2 2s;
+}
+
+.main-wrapper {
+    h1 {
+        margin: 0 auto;
+        display: table;
+        padding-top: 30vh;
+        font-size: 3rem;
+        font-weight: normal;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    .flex-target {
+        display: flex;
+        padding-top: 20vh;
+        .text {
+            padding-top: 5vh;
+        }
+    }
+    .flex-target:nth-child(odd) {
+        .text {
+            padding-left: 10vw;
+            padding-right: 5vw;
+        }
+    }
+    .flex-target:nth-child(even) {
+        .text {
+            padding-left: 5vw;
+        }
+        img {
+            margin-left: 5vw;
+        }
+    }
 }

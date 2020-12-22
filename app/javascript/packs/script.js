@@ -8,4 +8,6 @@ document.getElementById("menubutton").addEventListener("click", function() {
 window.onload = function() {
     document.getElementById("animation-picture1 animation-target").classList.add("show");  
     document.getElementById("animation-picture2 animation-target").classList.add("show"); 
+    document.getElementById("top-wrapper-theme1").classList.add("show"); 
+    document.getElementById("top-wrapper-theme2").classList.add("show"); 
 }
