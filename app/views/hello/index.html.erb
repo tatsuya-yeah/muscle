@@ -4,7 +4,8 @@
 <% if user_signed_in? %>
     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
 <% else %>
-    <header>
+
+    <div class="header">
         <div class="header-right">
             <a class="menubutton" id="menubutton">
                 <div></div>
@@ -15,8 +16,8 @@
 
         <div class="menu" id="menu">
             <ul class="menu-box1">
-                <li class="sighup1"><a href=""><%= link_to "新規登録", new_user_registration_path %></a></li>
-                <li class="login1"><a href=""><%= link_to "ログイン", tweets_path %></a></li>
+                <li class="sighup1"><a href=""><%= link_to "Signup", new_user_registration_path %></a></li>
+                <li class="login1"><a href=""><%= link_to "Login", tweets_path %></a></li>
                 <li><a href="#feature">機能紹介</a></li>
             </ul>
             <ul class="menu-box2">
@@ -31,7 +32,7 @@
                 <li><a href="#other5">ＤＭ機能</a></li>
             </ul>
         </div>
-    </header>
+    </div>
     <div class="mask" id="mask"></div>
 
     <div class="top-wrapper">
@@ -46,9 +47,9 @@
                     <div></div>
                 </div>
                 <div class="top-wrapper-theme2" id="top-wrapper-theme2">
-                        <p>あなたがお家で行っている<br>筋トレやってる感を<br>
-                        盛大に演出する<br>おうちトレーニー専用の<br>サービス。<br>
-                        あなたのおうち筋トレの効率を<br>最大化する機能を多数搭載。
+                        <p>　おうち筋トレ<span>やってる感</span>を<br>
+                        　　盛大に演出する<br>　　　おうちトレーニー<br>　　　　専用サービス<br>
+
                     </p>
 
                     </div>
@@ -58,7 +59,7 @@
     <div class="main-wrapper">
         <div class="container">
             <h1>主な機能紹介</h1>
-            <div id="function1" class="flex-target">
+            <div id="function1" class="flex-target animation-text">
                 <img src="/assets/cropBO15103017151030175471.jpg" alt="" width="500px" height="300px">
                 <div class="text">
                     <h2><i class="far fa-calendar-alt"></i>その日のトレーニングをカレンダーで記録</h2>
@@ -67,7 +68,7 @@
                     </p>
                 </div>
             </div>
-            <div id="function2" class="flex-target">
+            <div id="function2" class="flex-target animation-text">
                 <div class="text">
                     <h2><i class="far fa-male"></i>あなたはどんな体型？体型診断搭載！</h2>
                     <p>身長と体重、体脂肪率を入力するだけで、BMIと体脂肪率から、<br>
@@ -75,7 +76,7 @@
                 </div>
                 <img src="/assets/cropBO15103017151030175471.jpg" alt="" width="500px" height="300px">
             </div>
-            <div id="fuction3" class="flex-target">
+            <div id="fuction3" class="flex-target animation-text">
                 <img src="/assets/cropBO15103017151030175471.jpg" alt="" width="500px" height="300px">
                 <div class="text">
                     <h2><i class="far fa-calendar"></i>日々の成果を体重推移で目に見えるように</h2>
@@ -84,7 +85,7 @@
                     </p>
                 </div>
             </div>
-            <div id="function4" class="flex-target">
+            <div id="function4" class="flex-target animation-text">
                 <div class="text">
                     <h2><i class="far fa-comment-dots"></i>おすすめの筋トレ投稿機能</h2>
                     <p>ユーザーがおすすめの筋トレ動画や器具を投稿して、
@@ -96,26 +97,27 @@
     </div>
     <div class="bottom-wrapper">
         <div class="container">
-            <div id="other1">
+            <h2>他にもこんな機能を搭載しています</h2>
+            <div id="other1" class="bottom-box animation-box">
                 <h3><i class="far fa-heart"></i>いいね</h3>
                 <p>「いいね」でユーザーの筋トレモチベを上げよう。</p>
             </div>
-            <div id="other2">
+            <div id="other2" class="bottom-box animation-box">
                 <h3><i class="far fa-handshake"></i>フォロー</h3>
                 <p>気になるおうちトレーニーをフォローして、
-                　　みんなの日々の筋トレをチェック。</p>
+                みんなの日々の筋トレをチェック。</p>
             </div>
-            <div id="other3">
+            <div id="other3" class="bottom-box animation-box">
                 <h3><i class="far fa-comment"></i>コメント</h3>
                 <p>投稿に対して「コメント」をして、
                     応援したり、アドバイスしたりしよう。
                 </p>
             </div>
-            <div id="other4">
-                <h3><i class="far fa-thumbs-up"></i>おすすめ筋トレランキング</h3>
+            <div id="other4" class="bottom-box animation-box">
+                <h3><i class="far fa-thumbs-up"></i>ランキング機能</h3>
                 <p>おすすめ筋トレ投稿のいいね数で人気の筋トレ投稿をチェック。</p>
             </div>
-            <div id="other5">
+            <div id="other5" class="bottom-box animation-box">
                 <h3><i class="far fa-comments"></i>DM機能</h3>
                 <p>気になるおうちトレーニーにDMを送って、更に仲良くなろう。</p>
             </div>
@@ -125,10 +127,12 @@
 
         <div class="start-wrapper">
             <div class="container">
-                <h2><i class="fas fa-dumbbell"></i>さあ、最強のおうちトレーニーになろう。</h2>
+                <h2> To be the <span class="span3">Stronget</span><br><span class="span4">Home Trainee</span></h2>
+                <img src="/assets/jonathan-borba-lrQPTQs7nQQ-unsplash.jpg" alt="" width="100%" height= 500px">
+
                 <ul class="start">
-                    <li class="sighup2"><i class="far fa-check-circle"></i><%= link_to "新規登録", new_user_registration_path %></li>
-                    <li class="login2"><i class="fas fa-pen"></i><%= link_to "ログイン", tweets_path %></li>
+                    <li class="signup2 animation-box"><%= link_to "Signup", new_user_registration_path %></li>
+                    <li class="login2 animation-box"> <%= link_to "Login", tweets_path %></li>
                 </ul>
             </div>
         </div>

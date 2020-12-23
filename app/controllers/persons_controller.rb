@@ -1,9 +1,11 @@
 class PersonsController < ApplicationController
 
     def index
-
         @person = Person.find_by(user_id:current_user.id)
-        @BMI = (@person.weight.to_f / @person.height.to_f ** 2)
+        @persons = Person.all
+        @BMI = (@person.weight.to_f * 10000/ @person.height.to_f ** 2)
+        @my_BMI = @BMI.round(1)
+
 
     end
 
@@ -15,8 +17,9 @@ class PersonsController < ApplicationController
     end
     
     def create
-        person = Person.new(person_params)
-        if person.save
+        @person = Person.new(person_params)
+        @person.user_id = current_user.id
+        if @person.save
             flash[:notice] = ''
             redirect_to :action => "index"
         else 
