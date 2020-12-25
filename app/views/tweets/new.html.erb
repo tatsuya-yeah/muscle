@@ -1,6 +1,29 @@
-<h1>おすすめを投稿</h1>
-<%= form_for @tweet do |f| %>
+<link rel="stylesheet" href="stylesheets/tweets.css">
 
+
+
+<div class="header-tweet-new">
+    <ul>
+    <li><%= link_to "マイページ", front_path(id: current_user) %></li> 
+    <li><i class="far fa-comment-alt"></i>おすすめ投稿</li>
+    <li><%= link_to "おすすめ投稿一覧", tweets_path %></li>
+    </ul>
+</div>
+
+<div class="tweets-container">
+    <div class="tweet-left">
+    <li><i class="fas fa-home"></i><%= link_to "マイページ", front_path(id: current_user), class:"function" %></li> 
+    <li><i class="far fa-comment-alt"></i>おすすめ投稿</li>
+    <li><i class="far fa-comment-dots"></i><%= link_to "今日の筋トレを記録", new_blog_path %> </li>
+    <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
+    <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
+    <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
+    <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
+    <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+    </div>
+    <div class="tweet-new-center">
+    <h1>おすすめを投稿</h1>
+    <%= form_for @tweet do |f| %>
     <div class="field">
         <%= f.label :タイトル %>
         <%= f.text_field :title, :size => 30 %>
@@ -29,10 +52,19 @@
         <%= f.label :動画 %>
         <%= f.url_field :youtube_url %>
     </div>
-    <%= f.submit "投稿する" %>
-<% end %>
+    <div class="submit">
+        <%= f.submit "投稿する" %>
+    </div>
+    <% end %>
+    </div>
+    <div class="tweet-new-right">
+        <% @my_tweets.each do |t| %>
+            <%= t.title %>
+            <%= t.part %>
+            <%= t.training %>
+        <% end %>
+    </div>
+</div>
 
 
 
-
-<%= link_to "マイページに戻る", front_path(id: current_user) %>

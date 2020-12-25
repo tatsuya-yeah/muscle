@@ -1,1 +1,217 @@
-/* No CSS *//*# sourceMappingURL=tweets.css.map */
+@charset "UTF-8";
+.header-tweet-index {
+  background-color: #ddd;
+  height: 10vh;
+  width: 100%;
+  font-weight: normal;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+  font-weight: bold;
+}
+
+.header-tweet-index ul {
+  margin: .5%;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header-tweet-index ul li {
+  line-height: 10vh;
+}
+
+.header-tweet-index ul li:first-of-type {
+  margin-left: 3%;
+}
+
+.header-tweet-index ul li:nth-of-type(2) {
+  height: 10vh;
+  border-bottom: 5px solid #d37800;
+  color: #d37800;
+  width: 12vw;
+}
+
+.header-tweet-index ul li:nth-of-type(2) .far {
+  padding-right: 4%;
+  padding-left: 2%;
+}
+
+.header-tweet-index ul .recommend-tweet-button {
+  margin: 1.5vh 3% 0 0;
+  padding: 0 1%;
+  border: #ffa300 1px solid;
+  line-height: 7vh;
+  background-color: #ffa300;
+  border-radius: 4px;
+  border-bottom: 4px solid #d37800;
+  height: 7vh;
+}
+
+.header-tweet-index ul .recommend-tweet-button:active {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+  border-bottom: none;
+}
+
+.tweets-container {
+  background-color: #ddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+  font-weight: bold;
+}
+
+.tweet-left {
+  background-color: #fff;
+  margin: .5%;
+  height: 90vh;
+  font-size: 1.4rem;
+  width: 25%;
+}
+
+.tweet-left .far {
+  padding: 0 3%;
+}
+
+.tweet-left .fas {
+  padding: 0 3%;
+}
+
+.tweet-left li:first-of-type {
+  padding-top: 15%;
+}
+
+.tweet-left li:nth-of-type(2) {
+  color: #d37800;
+}
+
+.tweet-left li {
+  margin: 10% 0;
+}
+
+.tweet-left li:hover {
+  color: #d37800;
+}
+
+.tweet-left .function:hover {
+  color: #d37800;
+}
+
+.tweet-center {
+  background-color: #fff;
+  margin: .5%;
+  height: 90vh;
+  overflow: scroll;
+  width: 50%;
+}
+
+.tweet-center .tweet {
+  height: 60vh;
+  border: #111 1px solid;
+}
+
+.tweet-center .tweet .top-tweet {
+  padding: 4%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tweet-center .tweet .top-tweet li:not(:first-of-type) {
+  padding: 0 5%;
+}
+
+.tweet-center .tweet .top-tweet li:first-of-type {
+  margin-left: 2%;
+}
+
+.tweet-center .tweet .top-tweet .user-image {
+  border-radius: 50%;
+}
+
+.tweet-center .tweet .detail-tweet {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 3%;
+}
+
+.tweet-center .tweet .detail-tweet li {
+  padding-left: 8%;
+}
+
+.tweet-center .tweet .detail-tweet .title {
+  margin-left: 10%;
+}
+
+.tweet-center .tweet .detail-tweet .content {
+  position: absolute;
+  top: 0;
+  left: 30%;
+}
+
+.tweet-right {
+  background-color: #fff;
+  margin: .5%;
+  width: 25%;
+  overflow: scroll;
+  height: 90vh;
+}
+
+.tweet-right h2 {
+  font-size: 1.6rem;
+  margin: 5% auto;
+  display: table;
+}
+
+.tweet-right .rank-tweet {
+  height: 20vh;
+  border: #111 1px solid;
+}
+
+.tweets-container .tweet-new-center {
+  margin: 0.3%;
+  width: 50%;
+}
+
+.tweets-container .tweet-new-right {
+  margin: 0.3%;
+  width: 25%;
+}
+
+.header-tweet-new {
+  height: 10vh;
+  width: 100%;
+  font-weight: bold;
+}
+
+.header-tweet-new ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header-tweet-new ul li {
+  line-height: 10vh;
+}
+
+.header-tweet-new ul li:first-of-type {
+  padding-left: 3%;
+}
+
+.header-tweet-new ul li:nth-of-type(2) {
+  width: 9.5vw;
+}
+
+.header-tweet-new ul li:nth-of-type(3) {
+  padding-right: 3%;
+}
+/*# sourceMappingURL=tweets.css.map */

@@ -1,30 +1,55 @@
-<%= form_with(model: @blog, local: true) do |f| %>
+<link rel="stylesheet" href="stylesheets/blogs.css">
 
-    <div class="field">
-        <%= f.label :部位 %>
-        <%= f.select :part,
+<div class="header-blog-new">
+    <ul>
+        <li><%= link_to "マイページ", front_path(id: current_user) %></li>
+        <li><i class="far fa-comment-alt"></i>今日の筋トレを記録</li>
+        <li><%= link_to "みんなの今日の筋トレ記録をみる", blogs_path %></li>
+    </ul>
+</div>
+<div class="blogs-container">
+    <div class="blog-new-left">
+        <li><i class="fas fa-home"></i><%= link_to "マイページ", front_path(id: current_user) %></li> 
+        <li><i class="far fa-comment-alt"></i>今日の筋トレを記録</li>
+        <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
+        <li><i class="far fa-comment-dots"></i><%= link_to "おすすめ投稿", new_tweet_path %></li>
+        <li><i class="far fa-comment-alt"></i><%= link_to "おすすめ投稿一覧", tweets_path %></li>
+        <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
+        <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
+        <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
+        <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+    </div>
+    <div class="blog-new-center">
+        <%= form_with(model: @blog, local: true) do |f| %>
+        <div class="field">
+            <%= f.label :部位 %>
+            <%= f.select :part,
             [["腹筋", "腹筋"],
             ["肩", "肩"]], include_blank: "選択して下さい" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :種目 %>
+            <%= f.text_field :training, :size => 30 %>
+        </div>
+
+        <div class="field">
+            <%= f.label :感想 %>
+            <%= f.text_field :about, :size => 30 %>
+        </div>
+
+        <div class="time">
+            <%= f.label :トレーニング日 %>
+            <%= f.datetime_select :start_time %>
+        </div>
+
+
+        <div class="submit">
+            <%= f.submit %>
+        </div>
+        <% end %>
     </div>
+    <div class="blog-new-right">
 
-    <div class="field">
-        <%= f.label :種目 %>
-        <%= f.text_field :training, :size => 30 %>
     </div>
-
-    <div class="field">
-        <%= f.label :感想 %>
-        <%= f.text_field :about, :size => 30 %>
-    </div>
-
-    <div class="time">
-        <%= f.label :トレーニング日 %>
-        <%= f.datetime_select :start_time %>
-    </div>
-
-
-    <div class="submit">
-        <%= f.submit %>
-    </div>
-
-<% end %>
+</div>

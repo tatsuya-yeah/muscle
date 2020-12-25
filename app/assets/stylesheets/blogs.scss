@@ -1,5 +1,179 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.header-blog-new {
+    background-color: #ddd;
+    height: 10vh;
+    width: 100%;
+    font-weight: normal;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
 
+    ul {
+        margin: .5%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
 
+        li {
+            line-height: 10vh;
+        }
+
+        li:first-of-type {
+            margin-left: 3%;
+        }
+
+        li:nth-of-type(2) {
+            height: 10vh;
+            border-bottom: 5px solid #d37800;
+            color: #d37800;
+            width: 13.5vw;
+            margin-left: 5%;
+
+            .far {
+                padding-right: 4%;
+                padding-left: 2%;
+
+            }
+        }
+        li:nth-of-type(3) {
+            margin-right: 3%;
+        }
+    }
+}
+
+.blogs-container {
+    background-color: #ddd;
+    display: flex;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
+
+    .blog-new-left {
+        background-color: #fff;
+        margin: .5%;
+        height: 90vh;
+        font-size: 1.4rem;
+        width: 25%;
+        padding: 3%;
+
+        .far {
+            padding: 0 3%;
+        }
+
+        .fas {
+            padding: 0 3%;
+        }
+
+        li:first-of-type {
+            padding-top: 15%;
+        }
+
+        li {
+            padding-bottom: 15%;
+        }
+        li:nth-of-type(2) {
+            color: #d37800;
+        }
+
+    }
+
+    .blog-new-center {
+        width: 50%;
+        background-color: #fff;
+        margin: 0.5%;
+    }
+
+    .blog-new-right {
+        width: 25%;
+        background-color: #fff;
+        margin: 0.5%;
+
+    }
+}
+
+.header-blog-index {
+    background-color: #ddd;
+    height: 10vh;
+    width: 100%;
+    font-weight: normal;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
+
+    ul {
+        margin: .5%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            line-height: 10vh;
+        }
+
+        li:first-of-type {
+            margin-left: 3%;
+        }
+
+        li:nth-of-type(2) {
+            height: 10vh;
+            border-bottom: 5px solid #d37800;
+            color: #d37800;
+            width: 10.5vw;
+            margin-left: 5%;
+
+            .far {
+                padding-right: 4%;
+                padding-left: 2%;
+
+            }
+        }
+        li:nth-of-type(3) {
+            margin-right: 3%;
+        }
+    }
+}
+
+.blogs-container {
+    background-color: #ddd;
+    display: flex;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
+
+    .blog-index-left {
+        background-color: #fff;
+        margin: .5%;
+        height: 90vh;
+        font-size: 1.4rem;
+        width: 25%;
+        padding: 3%;
+
+        .far {
+            padding: 0 3%;
+        }
+
+        .fas {
+            padding: 0 3%;
+        }
+
+        li:first-of-type {
+            padding-top: 15%;
+        }
+
+        li {
+            padding-bottom: 15%;
+        }
+        li:nth-of-type(2) {
+            color: #d37800;
+        }
+
+    }
+    .blog-index-center {
+        width: 50%;
+        margin: 0.5%;
+        height: 90vh;
+        background-color: #fff;
+    }
+}

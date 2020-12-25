@@ -3,12 +3,14 @@ class TweetsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @tweets =Tweet.all.page(params[:page]).per(5)
-        @all_ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(5).pluck(:tweet_id))
+        @tweets =Tweet.all.order(created_at: :desc) 
+        @all_ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(10).pluck(:tweet_id))
     end
 
     def new 
         @tweet = Tweet.new
+        @tweets =Tweet.all.order(created_at: :desc) 
+        @my_tweets = @tweets.select { |tweet| tweet.user_id == current_user.id } 
     end
 
     def create

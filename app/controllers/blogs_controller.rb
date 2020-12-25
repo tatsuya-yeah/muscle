@@ -3,7 +3,8 @@ class BlogsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @blogs = Blog.all
+        @blogs = Blog.all.order(created_at: :desc)
+        @my_blogs = @blogs.select { |blog| blog.user_id == current_user.id } 
     end
     
     def new

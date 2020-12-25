@@ -1,3 +1,7 @@
+.container {
+  color: #fff;
+}
+
 .header {
   background-color: #222;
   z-index: 3;

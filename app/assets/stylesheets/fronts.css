@@ -1,1 +1,194 @@
-/* No CSS *//*# sourceMappingURL=fronts.css.map */
+@charset "UTF-8";
+.header-fronts {
+  background-color: #222;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 10vh;
+  width: 100%;
+}
+
+.header-fronts .header-fronts-right .menubutton {
+  display: block;
+  z-index: 3;
+  height: 30px;
+  width: 30px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.header-fronts .header-fronts-right .menubutton div {
+  height: 2px;
+  width: 100%;
+  background-color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.header-fronts .header-fronts-right .menubutton div:nth-of-type(1) {
+  -webkit-transform: translate(-50%, -11px);
+          transform: translate(-50%, -11px);
+}
+
+.header-fronts .header-fronts-right .menubutton div:nth-of-type(3) {
+  -webkit-transform: translate(-50%, 11px);
+          transform: translate(-50%, 11px);
+}
+
+.header-fronts .header-fronts-right .menubutton.active {
+  background-color: #222;
+  z-index: 3;
+}
+
+.header-fronts .header-fronts-right .menubutton.active div:nth-of-type(2) {
+  opacity: 0;
+}
+
+.header-fronts .header-fronts-right .menubutton.active div:nth-of-type(1) {
+  -webkit-transform: rotate(-45deg) translate(-50%, 0);
+          transform: rotate(-45deg) translate(-50%, 0);
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+
+.header-fronts .header-fronts-right .menubutton.active div:nth-of-type(3) {
+  -webkit-transform: rotate(45deg) translate(-50%, 0);
+          transform: rotate(45deg) translate(-50%, 0);
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+
+.menu.active {
+  display: block;
+  position: fixed;
+  background-color: #555;
+  opacity: .9;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  -webkit-transition: .5s;
+  transition: .5s;
+  width: 30vw;
+  height: 100vh;
+  padding-top: 15vh;
+  -webkit-box-shadow: #555 0 0 10px 5px;
+          box-shadow: #555 0 0 10px 5px;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.menu.active .menu-box {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu.active .menu-box li {
+  font-size: 30px;
+  padding-bottom: 20px;
+  display: table;
+  cursor: pointer;
+  padding-left: 3vw;
+}
+
+.menu.active .menu-box li:hover {
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.menu {
+  display: none;
+  padding-top: 15vh;
+  -webkit-transform: translateX(-30vw);
+          transform: translateX(-30vw);
+  -webkit-transition: 3s;
+  transition: 3s;
+}
+
+.menu a {
+  color: #fff;
+}
+
+.menu .menu-box {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu .menu-box li {
+  font-size: 30px;
+  padding-bottom: 20px;
+  display: table;
+  padding-left: 3vh;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: .5s;
+  transition: .5s;
+  z-index: 2;
+}
+
+.mask.active {
+  opacity: .8;
+  visibility: visible;
+}
+
+.front-center {
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.front-center .front-blog {
+  height: 80vh;
+  overflow: scroll;
+  background-color: #eee;
+  margin: 0.5%;
+  margin-top: 12vh;
+  width: 30vw;
+}
+
+.front-center .front-blog h2 {
+  padding: 5% 3%;
+  border-bottom: #ddd 1px solid;
+}
+
+.front-center .front-blog .front-blog-self {
+  border-bottom: #ddd 1px solid;
+}
+
+.front-center .front-blog .front-blog-self ul {
+  padding: 5% 1%;
+  display: block;
+}
+
+.front-center .front-blog .front-blog-self li {
+  padding-right: 3%;
+}
+
+.front-center .front-blog .front-blog-self .front-blog-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.front-center .front-blog .front-blog-self .front-blog-detail .front-blog-detail-detail:hover {
+  color: brown;
+}
+/*# sourceMappingURL=fronts.css.map */

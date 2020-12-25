@@ -1,3 +1,210 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.header-tweet-index {
+    background-color: #ddd;
+    height: 10vh;
+    width: 100%;
+    font-weight: normal;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
+
+    ul {
+        margin: .5%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            line-height: 10vh;
+        }
+
+
+        li:first-of-type {
+            margin-left: 3%;
+        }
+
+        li:nth-of-type(2) {
+            height: 10vh;
+            border-bottom: 5px solid #d37800;
+            color: #d37800;
+            width: 12vw;
+
+            .far {
+                padding-right: 4%;
+                padding-left: 2%;
+
+            }
+        }
+
+        .recommend-tweet-button {
+            margin: 1.5vh 3% 0 0;
+            padding: 0 1%;
+            border: #ffa300 1px solid;
+            line-height: 7vh;
+            background-color: #ffa300;
+            border-radius: 4px;
+            border-bottom: 4px solid #d37800;
+            height: 7vh;
+        }
+
+        .recommend-tweet-button:active {
+            transform: translateY(4px);
+            border-bottom: none;
+        }
+
+    }
+}
+
+.tweets-container {
+    background-color: #ddd;
+    display: flex;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
+}
+
+.tweet-left {
+    background-color: #fff;
+    margin: .5%;
+    height: 90vh;
+    font-size: 1.4rem;
+    width: 25%;
+    .far {
+        padding: 0 3%;
+    }
+
+    .fas {
+        padding: 0 3%;
+    }
+
+    li:first-of-type {
+        padding-top: 15%;
+    }
+    li:nth-of-type(2) {
+        color: #d37800;
+    }
+
+    li {
+        margin: 10% 0;
+    }
+    li:hover {
+        color: #d37800;
+    }
+    .function:hover {
+        color: #d37800;
+    }
+
+}
+
+.tweet-center {
+    background-color: #fff;
+    margin: .5%;
+    height: 90vh;
+    overflow: scroll;
+    width: 50%;
+
+    .tweet {
+        height: 60vh;
+        border: #111 1px solid;
+
+        .top-tweet {
+            padding: 4%;
+            display: flex;
+
+            li:not(:first-of-type) {
+                padding: 0 5%;
+            }
+
+            li:first-of-type {
+                margin-left: 2%;
+            }
+
+            .user-image {
+                border-radius: 50%;
+            }
+        }
+
+        .detail-tweet {
+            position: relative;
+            display: flex;
+            padding-bottom: 3%;
+
+            li {
+                padding-left: 8%;
+            }
+
+            .title {
+                margin-left: 10%;
+            }
+
+            .content {
+                position: absolute;
+                top: 0;
+                left: 30%;
+            }
+        }
+
+    }
+}
+
+.tweet-right {
+    background-color: #fff;
+    margin: .5%;
+    width: 25%;
+
+    overflow: scroll;
+    height: 90vh;
+
+    h2 {
+        font-size: 1.6rem;
+        margin: 5% auto;
+        display: table;
+    }
+
+    .rank-tweet {
+        height: 20vh;
+        border: #111 1px solid;
+    }
+}
+
+.tweets-container {
+    .tweet-new-center {
+        margin: 0.3%;
+        width: 50%;
+    }
+
+    .tweet-new-right {
+        margin: 0.3%;
+        width: 25%;
+    }
+}
+
+.header-tweet-new {
+    height: 10vh;
+    width: 100%;
+    font-weight: bold;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            line-height: 10vh;
+        }
+
+        li:first-of-type {
+            padding-left: 3%;
+        }
+        li:nth-of-type(2){
+            width: 9.5vw;   
+        }
+        li:nth-of-type(3) {
+            padding-right: 3%;
+        }
+
+    }
+}
