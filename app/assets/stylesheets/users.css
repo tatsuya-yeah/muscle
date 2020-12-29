@@ -1,1 +1,291 @@
-/* No CSS *//*# sourceMappingURL=users.css.map */
+@charset "UTF-8";
+.header-user-show {
+  background-color: #eee;
+  height: 10vh;
+  width: 100%;
+  font-weight: normal;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+  font-weight: bold;
+}
+
+.header-user-show ul {
+  margin: .5%;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header-user-show ul li {
+  line-height: 10vh;
+}
+
+.header-user-show ul li:first-of-type {
+  margin-left: 3%;
+}
+
+.header-user-show ul li:nth-of-type(2) {
+  height: 10vh;
+  border-bottom: 5px solid #d37800;
+  color: #d37800;
+  width: 12vw;
+}
+
+.users-container {
+  background-color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+}
+
+.user-show-left {
+  width: 33vw;
+  background-color: #fff;
+  margin: 0.5%;
+  height: 90vh;
+}
+
+.user-show-left .user-tweet {
+  height: 70vh;
+  overflow: scroll;
+}
+
+.user-show-left .user-tweet h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding: 5% 0 5% 3%;
+}
+
+.user-show-left .user-tweet-self {
+  font-weight: normal;
+  height: 20vh;
+  border-bottom: #ddd 1px solid;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box1 img {
+  border-radius: 50%;
+  margin: .5vh 0 0 .5vw;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box1 li {
+  font-weight: bold;
+  margin-left: 1vw;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box2 {
+  margin-left: 5vw;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box2 li {
+  padding-top: .1vh;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1vh;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box3 li {
+  margin-left: -2vw;
+}
+
+.user-show-left .user-tweet-self .user-tweet-self-box3 a {
+  display: inline-block;
+  margin-left: 3vw;
+}
+
+.user-show-center {
+  background-color: #fff;
+  margin: 0.5%;
+  width: 33vw;
+  font-weight: normal;
+  height: 90vh;
+}
+
+.user-show-center .top-detail {
+  padding-top: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.user-show-center img {
+  display: inline-block;
+  margin-left: 25%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-show-center .show-name {
+  font-weight: bold;
+  line-height: 50px;
+  padding-left: 5%;
+}
+
+.user-show-center .show-name:hover {
+  color: #d37800;
+  cursor: pointer;
+}
+
+.user-show-center .user-edit {
+  margin-top: 5%;
+  width: 235px;
+  height: 50px;
+  border-radius: 12% / 50%;
+  border: #03a9f4 solid 1px;
+}
+
+.user-show-center .user-edit a {
+  color: #03a9f4;
+}
+
+.user-show-center .user-edit .user-edit-text {
+  display: table;
+  line-height: 50px;
+  margin: 0 auto;
+}
+
+.user-show-center .balloon1 {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #FFF;
+  border: solid 3px #555;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.user-show-center .balloon1:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  margin-left: -15px;
+  border: 12px solid transparent;
+  border-bottom: 12px solid #FFF;
+  z-index: 2;
+}
+
+.user-show-center .balloon1:after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -17px;
+  border: 14px solid transparent;
+  border-bottom: 14px solid #555;
+  z-index: 1;
+}
+
+.user-show-center .balloon1 p {
+  margin: 0;
+  padding: 0;
+}
+
+.user-show-right {
+  width: 33vw;
+  height: 90vh;
+  background-color: #fff;
+  margin: 0.5%;
+}
+
+.header-user-index {
+  background-color: #eee;
+  height: 10vh;
+  width: 100%;
+  font-weight: normal;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+  font-weight: bold;
+}
+
+.header-user-index ul {
+  margin: .5%;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header-user-index ul li {
+  line-height: 10vh;
+}
+
+.header-user-index ul li:first-of-type {
+  margin-left: 3%;
+}
+
+.header-user-index ul li:nth-of-type(2) {
+  height: 10vh;
+  border-bottom: 5px solid #d37800;
+  color: #d37800;
+  width: 12vw;
+}
+
+.user-index-center {
+  width: 50%;
+  background-color: #fff;
+  margin: .5%;
+}
+
+.user-index-center .search-wrapper {
+  display: table;
+  margin: 0 auto;
+}
+
+.user-index-center .search-wrapper h3 {
+  font-weight: normal;
+  display: table;
+  margin: 5% auto;
+}
+
+.user-index-center .search-wrapper .search-field {
+  height: 3vh;
+  width: 20vw;
+  border-radius: 5%;
+  outline: none;
+}
+
+.user-index-center .user-wrapper .user-self-wrapper {
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.user-index-center .user-wrapper img {
+  display: inline-block;
+  margin: 8% 0 0 8%;
+  border-radius: 50%;
+}
+
+.user-index-center .user-wrapper p {
+  line-height: 50px;
+  margin-left: 3%;
+}
+
+.user-index-center .user-wrapper a:hover {
+  color: #d37800;
+}
+/*# sourceMappingURL=users.css.map */

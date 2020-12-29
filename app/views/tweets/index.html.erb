@@ -1,30 +1,76 @@
 <link rel="stylesheet" href="stylesheets/tweets.css">
+<%= javascript_pack_tag 'script' %>
+
 
 <div class="header-tweet-index">
     <ul>
-            <li><%= link_to "マイページ", front_path(id: current_user) %></li> 
-            <li><i class="far fa-comment-alt"></i>おすすめ投稿一覧</li>
-            <li class="recommend-tweet-button"><%= link_to "おすすめ投稿", new_tweet_path %></li>
+        <li><%= link_to "マイページ", front_path(id: current_user) %></li>
+        <li><i class="far fa-comment-alt"></i>おすすめ投稿一覧</li>
+        <li><%= link_to "マイページ", front_path(id: current_user) %></li>
     </ul>
 </div>
 
+<div class="modal1" id="modal1">
+    <div class="tweet-new-center">
+        <div class="modal1-top">
+            <h2>おすすめ投稿</h2>
+            <a class="modal1-close" id="modal1-close">×</a>
+        </div>
+        <%= form_for @tweet do |f| %>
+        <div class="field">
+            <%= f.label :タイトル, class:"tweet-label" %>
+            <%= f.text_field :title, :size => 100, :placeholder => "タイトルを入力してください。", class:"tweet-field" %>
+        </div>
+        <div class="field">
+            <%= f.label :部位, class:"tweet-label tweet-part" %>
+            <%= f.select :part,
+        [["腹筋", "腹筋"],
+        ["肩", "肩"],
+        ["背中", "背中"]], include_blank: "選択して下さい" %>
+
+        </div>
+        <div class="field">
+            <%= f.label :種目, class:"tweet-label" %>
+            <%= f.text_field :training, :size => 100, :placeholder => "種目を入力してください。", class:"tweet-field"  %>
+        </div>
+        <div class="field">
+            <%= f.label :内容, class:"tweet-label" %>
+            <%= f.text_field :about, :size => 100, :placeholder => "内容を入力してください。", class:"tweet-field" %>
+        </div>
+        <div class="field">
+            <%= f.label :画像, class:"tweet-label" %>
+            <%= f.file_field :image %>
+        </div>
+        <div class="field">
+            <%= f.label :YouTube, class:"tweet-label" %>
+            <%= f.url_field :youtube_url, :size => 100, :placeholder => "YouTubeのURLを入力してください。", class:"tweet-field"  %>
+        </div>
+        <div class="submit">
+            <%= f.submit "投稿する", class:"submit-text" %>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+<div class="mask1" id="mask1"></div>
+
+
 
 <div class="tweets-container">
-<div class="tweet-left">
-    <li><i class="fas fa-home"></i><%= link_to "マイページ", front_path(id: current_user), class:"function" %></li> 
-    <li><i class="far fa-comment-alt"></i>おすすめ投稿一覧</li>
-    <li><i class="far fa-comment-dots"></i><%= link_to "今日の筋トレを記録", new_blog_path %> </li>
-    <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
-    <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
-    <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
-    <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
-    <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
-</div>
-<div class="tweet-center">
-    <% @tweets.each do |t| %>
+    <div class="tweet-left">
+        <li><i class="far fa-comment-alt"></i>おすすめ投稿一覧</li>
+        <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
+        <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
+        <li><i class="far fa-address-card"></i><%= link_to "プロフィール", user_path(current_user.id) %></li>
+        <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
+        <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+        <li><a class="modal3-open" id="modal3-open">おすすめ投稿</a></li>
+    </div>
+    <div class="tweet-center">
+        <% @tweets.each do |t| %>
         <div class="tweet">
             <ul class="top-tweet">
-                <li class-"user-image"><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+                <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
                 <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
                 <li><%= t.created_at %></li>
             </ul>
@@ -44,48 +90,95 @@
                 <li class="title">コメント</li>
                 <li class="content"><%= t.about %></li>
             </ul>
-            <%= image_tag t.image_url, size: "250x200" if t.image? %>
-            <%=  video_tag t.video_url ,:controls => true if t.video? %>
-            <iframe width="200" height="100" src="https://www.youtube.com/embed/
-            <%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; 
-            encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <% if user_signed_in? %>
+            <div class="imagevideo">
+                <%= image_tag t.image_url, size: "250x200" if t.image? %>
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/
+                <%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; 
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="bottom-tweet">
+                <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
-                    <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
-                        <i class="fas fa-heart"></i><%= t.likes.count %>
-                    <% end %>
-                <% else %>
-                    <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
-                        <i class="fas fa-heart"></i><%= t.likes.count %>
-                    <% end %>
-                <% end %>
-            <% else %>
+                <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
                 <i class="fas fa-heart"></i><%= t.likes.count %>
-            <% end %>
-                 
-            <%= link_to "詳細へ", tweet_path(t.id) %>
-            <% if user_signed_in? && current_user.id == t.user_id %>  
-            <%= link_to "編集する", edit_tweet_path(t.id) %>
-            <%= link_to "削除する", tweet_path(t.id), method: :delete %>
-            <% end %> 
-        </div>  
-   
-
-    <% end %>
-</div>
-<div class="tweet-right">
-    <h2>いいね数ランキング</h2>
-    <% @all_ranks.each do |f| %>
-        <% @tweets.each do |t| %>
-        <div class="rank-tweet">
-            <li class-"user-image"><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
-            <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
-            <%= t.title %>
-            <%= t.part %>
-            <%= t.training %>
-            <%= link_to "詳細へ", tweet_path(t.id) %>
+                <% end %>
+                <% else %>
+                <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+                <% end %>
+                <% end %>
+                <% else %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+                <% end %>
+                <ul>
+                    <li><%= link_to  tweet_path(t.id) do %>
+                        <i class="far fa-eye"></i>
+                        <% end %>
+                    </li>
+                    <% if user_signed_in? && current_user.id == t.user_id %>
+                    <li><%= link_to edit_tweet_path(t.id) do   %>
+                        <i class="far fa-edit"></i>
+                        <% end %>
+                    </li>
+                    <li><%= link_to tweet_path(t.id), method: :delete do %>
+                        <i class="fas fa-trash"></i>
+                        <% end %>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
         </div>
         <% end %>
-    <% end %>
+    </div>
+
+
+    <div class="tweet-right">
+        <h2>いいね数ランキング</h2>
+        <% @all_ranks.each do |f| %>
+        <% @tweets.each do |t| %>
+        <div class="rank-tweet">
+            <ul class="rank-tweet-box1">
+                <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+                <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
+            </ul>
+            <ul class="rank-tweet-box2">
+                <li><%= t.title %></li>
+                <li><%= t.part %></li>
+                <li><%= t.training %></li>
+            </ul>
+            <ul class="rank-tweet-box3">
+                <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+                <% end %>
+                <% else %>
+                <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+                <% end %>
+                <% end %>
+                <% else %>
+                <li><i class="fas fa-heart"></i><%= t.likes.count %></li>
+                <% end %>
+                <li><%= link_to  tweet_path(t.id) do %>
+                    <i class="far fa-eye"></i>
+                    <% end %>
+                </li>
+                <% if user_signed_in? && current_user.id == t.user_id %>
+                <li><%= link_to edit_tweet_path(t.id) do   %>
+                    <i class="far fa-edit"></i>
+                    <% end %>
+                </li>
+                <li><%= link_to tweet_path(t.id), method: :delete do %>
+                    <i class="fas fa-trash"></i>
+                    <% end %>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+        <% end %>
+    </div>
 </div>
-</div>
+
+<%= javascript_pack_tag 'script' %>

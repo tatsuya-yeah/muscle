@@ -4,7 +4,7 @@
   <ul>
     <li><%= link_to "マイページ", front_path(id: current_user) %></li>
     <li><i class="far fa-comment-alt"></i>筋トレ記録一覧</li>
-    <li><%= link_to "今日の筋トレを記録", new_blog_path %> </li>
+    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
   </ul>
 </div>
 
@@ -13,31 +13,88 @@
 
 <div class="blogs-container">
   <div class="blog-index-left">
-    <li><i class="fas fa-home"></i><%= link_to "マイページ", front_path(id: current_user) %></li>
-    <li><i class="far fa-comment-alt"></i>今日の筋トレを記録</li>
-    <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
-    <li><i class="far fa-comment-dots"></i><%= link_to "おすすめ投稿", new_tweet_path %></li>
+    <li><i class="far fa-comment-alt"></i>筋トレ記録一覧</li>
     <li><i class="far fa-comment-alt"></i><%= link_to "おすすめ投稿一覧", tweets_path %></li>
     <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
     <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
     <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
     <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+    <li><%= link_to "今日の筋トレを記録", new_blog_path %> </li>
   </div>
+
   <div class="blog-index-center">
-    <% @blogs.each do |blog| %>
-    <tr>
-      <td><a href="/users/<%= blog.user.id %>"><%= blog.user.name %></a>
-      <td>
-      <td><%= blog.part %></td>
-      <td><%= blog.training %></td>
-      <td><%= blog.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-      <td><%= link_to '詳細へ', blog_path(blog.id) %></td>
-      <td><%= link_to '編集する', edit_blog_path(blog.id) %></td>
-      <td><%= link_to '削除する',blog_path(blog.id), method: :delete, data: { confirm: '筋トレ記録を削除しますか?' } %></td>
-    </tr>
+    <% @blogs.each do |t| %>
+    <div class="blog">
+      <ul class="top-blog">
+        <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+        <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
+        <li class="content"><%= t.start_time.strftime("%Y-%m-%d %H:%M") %></li>
+      </ul>
+      <ul class="detail-blog">
+        <li class="title">筋トレ部位</li>
+        <li class="content"><%= t.part %></li>
+      </ul>
+      <ul class="detail-blog">
+        <li class="title">トレーニング名</li>
+        <li class="content"><%= t.training %></li>
+      </ul>
+      <ul class="detail-blog">
+        <li class="content"><%= t.about %></li>
+      </ul>
+
+      <div class="bottom-blog">
+        <% if user_signed_in? %>
+        <% if current_user.already_loved?(t) %>
+        <%= link_to blog_love_path(id: t.id, blog_id: t.id), method: :delete do %>
+        <i class="fas fa-heart"></i><%= t.loves.count %>
+        <% end %>
+        <% else %>
+        <%= link_to blog_loves_path(id: t.id, blog_id: t.id), method: :post do %>
+        <i class="fas fa-heart"></i><%= t.loves.count %>
+        <% end %>
+        <% end %>
+        <% else %>
+        <i class="fas fa-heart"></i><%= t.loves.count %>
+        <% end %>
+        <ul>
+          <li><%= link_to  blog_path(t.id) do %>
+            <i class="far fa-eye"></i>
+            <% end %>
+          </li>
+          <% if user_signed_in? && current_user.id == t.user_id %>
+          <li><%= link_to edit_blog_path(t.id) do   %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </li>
+          <li><%= link_to blog_path(t.id), method: :delete do %>
+            <i class="fas fa-trash"></i>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
     <% end %>
   </div>
-  <div class="blog-index-left">
-
+  <div class="blog-index-right">
+    <h2>あなたの最近の筋トレ記録</h2>
+    <% @my_blogs.each do |t| %>
+    <div class="blog-self">
+      <ul class="blog-self-box1">
+        <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+        <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
+      </ul>
+      <div class="blog-detail">
+        <li><%= t.start_time.strftime("%Y-%m-%d") %></li>
+        <li><%= t.part %></li>
+        <li><%= t.training %></li>
+        <li><%= link_to  blog_path(t.id) do %>
+          <i class="far fa-eye"></i>
+          <% end %>
+        </li>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

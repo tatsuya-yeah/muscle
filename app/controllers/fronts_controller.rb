@@ -10,5 +10,7 @@ class FrontsController < ApplicationController
         @my_blogs = @blogs.select{ |blog| blog.user_id == current_user.id }
         @user = User.find(params[:id])
         @result = Graph.pluck(:weigh_on, :weight)
+        @tweet = Tweet.new
+        @blog = Blog.new
     end
 end

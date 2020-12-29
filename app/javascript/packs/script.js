@@ -31,3 +31,34 @@ window.addEventListener("scroll", function() {
         }
     }
 })
+
+document.getElementById("modal1-open").addEventListener("click", function() {
+    document.getElementById("modal1").classList.add("active");
+    document.getElementById("mask1").classList.add("active");
+})
+
+document.getElementById("modal1-close").addEventListener("click", function() {
+    document.getElementById("modal1").classList.remove("active");
+    document.getElementById("mask1").classList.remove("active");
+})
+
+document.getElementById("modal2-open").addEventListener("click", function() {
+    document.getElementById("modal2").classList.add("active");
+    document.getElementById("mask2").classList.add("active");
+})
+
+document.getElementById("modal2-close").addEventListener("click", function() {
+    document.getElementById("modal2").classList.remove("active");
+    document.getElementById("mask2").classList.remove("active");
+})
+
+document.getElementById("modal3-open").addEventListener("click", function() {
+    document.getElementById("modal1").classList.add("active");
+    document.getElementById("mask1").classList.add("active");
+})
+
+
+console.log("rfcgvhbjnk");
+
+
+

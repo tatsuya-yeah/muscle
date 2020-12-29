@@ -3,13 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .header-fronts {
-    background-color: #222;
+    background-color: #eee;
     z-index: 3;
     position: fixed;
     top: 0;
     left: 0;
     height: 10vh;
     width: 100%;
+
     .header-fronts-right {
         .menubutton {
             display: block;
@@ -19,6 +20,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
+
             div {
                 height: 2px;
                 width: 100%;
@@ -29,30 +31,38 @@
                 transform: translate(-50%, 0);
                 transition: .5s;
             }
+
             div:nth-of-type(1) {
                 transform: translate(-50%, -11px);
-            } div:nth-of-type(3) {
+            }
+
+            div:nth-of-type(3) {
                 transform: translate(-50%, 11px);
             }
         }
+
         .menubutton.active {
             background-color: #222;
             z-index: 3;
         }
+
         .menubutton.active div:nth-of-type(2) {
             opacity: 0;
         }
+
         .menubutton.active div:nth-of-type(1) {
             transform: rotate(-45deg) translate(-50%, 0);
             transform-origin: 0 50%;
         }
+
         .menubutton.active div:nth-of-type(3) {
             transform: rotate(45deg) translate(-50%, 0);
             transform-origin: 0 50%;
         }
     }
 }
-.menu.active{
+
+.menu.active {
     display: block;
     position: fixed;
     background-color: #555;
@@ -67,46 +77,73 @@
     box-shadow: #555 0 0 10px 5px;
     transform: translateX(0);
 
-    .menu-box {
+    .fronts-menu-box1 {
         opacity: 1;
         visibility: visible;
 
-    li {
-        font-size: 30px;
-        padding-bottom: 20px;
-        display: table;
-        cursor: pointer;
-        padding-left: 3vw;
-        }
-        li:hover {
-            opacity: .5;
-            transform: scale(1.1);
-        }
-    }
-}
-    .menu {
-        display: none;
-        padding-top: 15vh;
-        transform: translateX(-30vw);
-        transition: 3s;
-        a {
-            color: #fff;
-        }
-        .menu-box {
-            opacity: 0;
-            visibility: hidden;
         li {
             font-size: 30px;
             padding-bottom: 20px;
             display: table;
-            padding-left: 3vh;
-            font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
-            ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+            cursor: pointer;
+            margin-left: 3vw;
         }
-        }
-
-
     }
+}
+
+.menu {
+    display: none;
+    padding-top: 15vh;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+
+    a {
+        color: #fff;
+    }
+
+    .fronts-menu-box1 {
+        opacity: 0;
+        visibility: hidden;
+
+        li {
+            font-size: 30px;
+            padding-bottom: 20px;
+            display: table;
+        }
+
+        li:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .fronts-menu-box2 {
+        li {
+            width: 235px;
+            height: 50px;
+            border-radius: 12% / 50%;
+            border: #d37800 solid 1px;
+            background-color: #d37800;
+            margin: 3% 0 0 10%;
+        }
+
+        a {
+            cursor: pointer;
+            display: inline-block;
+            color: #fff;
+            font-weight: bold;
+            line-height: 50px;
+            display: table;
+            font-size: 1.2rem;
+            margin: 0 auto;
+            height: 40px;
+        }
+
+        li:hover {
+            opacity: .9;
+        }
+    }
+}
+
 .mask {
     position: fixed;
     top: 0;
@@ -119,42 +156,333 @@
     transition: .5s;
     z-index: 2;
 }
+
 .mask.active {
     opacity: .8;
     visibility: visible;
 }
 
+.modal1 {
+    z-index: 5;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    .tweet-new-center {
+        background-color: #fff;
+        border-radius: 3%;
+        width: 93%;
+        margin: 0.5%;
+        font-weight: normal;
+
+        .modal1-top {
+            display: flex;
+            a {
+                cursor: pointer;
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+                padding: 3% 5%;
+                color: #d37800;
+                border-bottom: 5px solid #d37800;
+                margin-bottom: 5%;
+            }
+            .modal1-close {
+                margin-left: 27vw;
+                margin-top: 1vh;
+                display: inline-block;
+                height: 6vh;
+            }
+        }
+
+        .tweet-label {
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 1.2rem;
+            border-left: 5px solid #d37800;
+            padding: 1% 0 1% 3%;
+            margin: 1%;
+        }
+
+        .tweet-part {
+            width: 45vw;
+        }
+
+        .tweet-field {
+            width: 45vw;
+            height: 5vh;
+        }
+
+        #tweet_part {
+            width: 10vw;
+            height: 5vh;
+        }
+
+        #tweet_part:hover {
+            border: #d37800 2px solid;
+        }
+
+        .submit {
+            width: 235px;
+            height: 50px;
+            border-radius: 12% / 50%;
+            border: #d37800 solid 1px;
+            background-color: #d37800;
+            margin: 5% auto;
+            display: table;
+
+            .submit-text {
+                border: none;
+                background-color: #d37800;
+                color: #fff;
+                font-weight: bold;
+                line-height: 50px;
+                display: table;
+                font-size: 1.3rem;
+                margin: 0 auto;
+                height: 40px;
+            }
+        }
+
+        .submit:hover {
+            opacity: .9;
+        }
+
+        .tweet-field:hover {
+            border: #d37800 3px solid;
+        }
+    }
+}
+.mask1 {
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+.mask1.active {
+    visibility: visible;
+    opacity: .8;
+}
+.modal1.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal2 {
+    z-index: 5;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    .blog-new {
+        background-color: #fff;
+        border-radius: 3%;
+        width: 93%;
+        margin: 0.5%;
+        font-weight: normal;
+
+        .modal2-top {
+            display: flex;
+            a {
+                cursor: pointer;
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+                padding: 3% 5%;
+                color: #d37800;
+                border-bottom: 5px solid #d37800;
+                margin-bottom: 5%;
+            }
+            .modal2-close {
+                margin-left: 22vw;
+                margin-top: 1vh;
+                display: inline-block;
+                height: 6vh;
+            }
+        }
+
+        .blog-label {
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 1.2rem;
+            border-left: 5px solid #d37800;
+            padding: 1% 0 1% 3%;
+            margin: 1%;
+        }
+
+        .blog-part {
+            width: 45vw;
+        }
+
+        .blog-field {
+            width: 45vw;
+            height: 5vh;
+        }
+
+        #blog_part {
+            width: 10vw;
+            height: 5vh;
+        }
+
+        #blog_part:hover {
+            border: #d37800 2px solid;
+        }
+
+        .submit {
+            width: 235px;
+            height: 50px;
+            border-radius: 12% / 50%;
+            border: #d37800 solid 1px;
+            background-color: #d37800;
+            margin: 10% auto;
+            display: table;
+
+            .submit-text {
+                border: none;
+                background-color: #d37800;
+                color: #fff;
+                font-weight: bold;
+                line-height: 50px;
+                display: table;
+                font-size: 1.3rem;
+                margin: 0 auto;
+                height: 40px;
+            }
+        }
+
+        .submit:hover {
+            opacity: .9;
+        }
+
+        .blog-field:hover {
+            border: #d37800 3px solid;
+        }
+    }
+}
+
+.mask2 {
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+.mask2.active {
+    visibility: visible;
+    opacity: .8;
+}
+.modal2.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 .front-center {
     font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
-    ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
     display: flex;
+
+    .calendar {
+        margin: 0.5%;
+    }
+
     .front-blog {
         height: 80vh;
         overflow: scroll;
         background-color: #eee;
-        margin: 0.5%;
+        margin: 0.1%;
         margin-top: 12vh;
         width: 30vw;
+
         h2 {
             padding: 5% 3%;
             border-bottom: #ddd 1px solid;
         }
+
         .front-blog-self {
             border-bottom: #ddd 1px solid;
+            .front-blog-self-box1 {
+                display: flex;
+                height: 50px;
+                img {
+                    border-radius: 50%;
+                }
+                li {
+                    line-height: 50px;
+                }
+                li:nth-of-type(2) {
+                    font-weight: bold;
+                }
+            }
             ul {
-                padding: 5% 1%;
+                padding: 1%;
                 display: block;
             }
 
             li {
                 padding-right: 3%;
             }
+            .front-blog-self-box2 {
+                margin-left: 4.5vw;
+                margin-bottom: 2%;
+            }
+            .front-blog-self-box3 {
+                display: flex;
+                margin-left: 4.5vw;
+                margin-bottom: 2%;
+            }
+
             .front-blog-detail {
                 display: flex;
+
                 .front-blog-detail-detail:hover {
                     color: brown;
                 }
             }
+        }
+    }
+}
+
+.front-blog {
+    background-color: #fff;
+    margin: .5%;
+    width: 25%;
+    overflow: scroll;
+    height: 90vh;
+
+    h2 {
+        margin-right: 0;
+        font-size: 1.4rem;
+        padding: 5% 0 5% 3%;
+        display: table;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .front-blog-self {
+        font-weight: normal;
+        border-bottom: #ddd 1px solid;
+
+        .front-blog-self-box1 {
+            display: flex;
         }
     }
 }

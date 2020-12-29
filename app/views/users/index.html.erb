@@ -1,17 +1,50 @@
-<h1>おうちトレーニー</h1>
-<% if user_signed_in? %>
-<%= link_to " マイページへ",front_path(id: current_user)  %>
-<h2><%= current_user.name %>さん、こんにちは</h2>
-<h3>おうちトレーニーを検索</h3>
- <%= form_tag({controller:"users",action:"index"}, method: :get) do %>
-   <%= text_field_tag :search %>
-   <%= submit_tag '検索する'  %>
-<% end %>
-<% @users.each do |u| %>
-  <p><a href="/users/<%= u.id %>"><%= u.name %>さん</a></p>
-<% end %>
-<% else %>
-  <%= link_to "ユーザーを登録する", new_user_registration_path %>
-  <br>
-  <%= link_to "ログインする", new_user_session_path %>
-<% end %>
+<link rel="stylesheet" href="stylesheets/users.css">
+
+
+
+<div class="header-user-index">
+  <ul>
+    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
+    <li><i class="far fa-user"></i>おうちトレーニー</li>
+    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
+
+  </ul>
+</div>
+
+<div class="users-container">
+  <div class="user-left">
+    <li><i class="far fa-user"></i>おうちトレーニー</li>
+    <li><i class="far fa-comment-alt"></i><%= link_to "おすすめ投稿一覧", tweets_path %></li>
+    <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
+    <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
+    <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
+    <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+  </div>
+
+  <div class="user-index-center">
+    <div class="search-wrapper">
+      <% if user_signed_in? %>
+      <h3>おうちトレーニーを検索</h3>
+      <%= form_tag({controller:"users",action:"index"}, method: :get) do %>
+      <%= text_field_tag :search,  '', class: 'search-field' %>
+      <%= submit_tag '検索する'  %>
+      <% end %>
+    </div>
+    <div class="user-wrapper">
+      <% @users.each do |u| %>
+      <div class="user-self-wrapper">
+        <li><%= image_tag u.image_url, size: "50x50" if u.image? %> </li>
+        <p><a href="/users/<%= u.id %>"><%= u.name %></a></p>
+      </div>
+      <% end %>
+      <% else %>
+      <%= link_to "ユーザーを登録する", new_user_registration_path %>
+      <br>
+      <%= link_to "ログインする", new_user_session_path %>
+      <% end %>
+    </div>
+  </div>
+  <div class="user-index-right">
+
+  </div>
+</div>

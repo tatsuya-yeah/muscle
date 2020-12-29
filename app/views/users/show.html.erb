@@ -1,58 +1,124 @@
-<h1>プロフィール</h1>
-<p>名前 : <%= @user.name %></p>
-<p>ユーザー画像 ： <%= image_tag @user.image_url %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>みんなにひとこと : <%= @user.profile %></p>
+<link rel="stylesheet" href="stylesheets/users.css">
+
+<div class="header-user-show">
+  <ul>
+    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
+    <li>プロフィール</li>
+    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
+  </ul>
+</div>
+
+<div class="users-container">
 
 
-<% if current_user.id == @user.id %>
-  <%= link_to "編集する", edit_user_registration_path %>
-<% end %>
 
-<h2>あなたのおすすめ投稿一覧</h2>
-<% @user.tweets.each do |t| %>
-  <%= t.user.name %>
-  <%= t.about %>
-<% end %>
-
-<h2>あなたがいいねしたおすすめ投稿一覧</h2>
-<% @user.liked_tweets.each do |t| %>
-  <%= t.user.name %>
-  <%= t.about %>
-<% end %>
-
-<h2>あなたの今日の筋トレ記録一覧</h2>
-<% @user.blogs.each do |t| %>
-  <%= t.user.name %>
-  <%= t.about %>
-<% end %>
-
-<h2>あなたがいいねした今日の筋トレ記録一覧</h2>
-<% @user.loved_blogs.each do |t| %>
-  <%= t.user.name %>
-  <%= t.about %>
-<% end %>
-
-
-<h2>フォロー中のユーザー<h2>
-<% @user.relationships.each do |t| %>
-  <%= t.user.name %>
-<% end %>
-
-<% if @user.id == current_user.id %>
-
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
+  <div class="user-show-left">
+    <div class="user-tweet">
+      <h2>おすすめ投稿</h2>
+      <% @user.tweets.each do |t| %>
+      <div class="user-tweet-self">
+        <ul class="user-tweet-self-box1">
+          <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+          <li><%= t.user.name %></li>
+          <li><%= t.created_at %></li>
+        </ul>
+        <ul class="user-tweet-self-box2">
+          <li><%= t.title %></li>
+          <li><%= t.part %></li>
+          <li><%= t.training %></li>
+        </ul>
+        <ul class="user-tweet-self-box3">
+          <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+          <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+          <i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+          <% else %>
+          <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+          <i class="fas fa-heart"></i><%= t.likes.count %>
+          <% end %>
+          <% end %>
+          <% else %>
+          <li><i class="fas fa-heart"></i><%= t.likes.count %></li>
+          <% end %>
+          <li><%= link_to  tweet_path(t.id) do %>
+            <i class="far fa-eye"></i>
+            <% end %>
+          </li>
+          <% if user_signed_in? && current_user.id == t.user_id %>
+          <li><%= link_to edit_tweet_path(t.id) do   %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </li>
+          <li><%= link_to tweet_path(t.id), method: :delete do %>
+            <i class="fas fa-trash"></i>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
       <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
-<% end %>
+    </div>
 
-<%= link_to "マイページに戻る", front_path(id: current_user) %>
-<%= render "relationships/follow_button", user: @user %>
+
+    <h2>いいねしたおすすめ投稿</h2>
+    <% @user.liked_tweets.each do |t| %>
+    <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+    <li><%= t.user.name %></li>
+    <li><%= t.about %></li>
+    <% end %>
+  </div>
+
+  <div class="user-show-center">
+    <div class="top-detail">
+      <p><%= image_tag @user.image_url %></p>
+      <p class="show-name"><%= @user.name %></p>
+    </div>
+    <div class="balloon1">
+      <p><%= @user.profile %></p>
+    </div>
+
+    <h2>フォロー中のユーザー<h2>
+        <% @user.relationships.each do |t| %>
+        <%= t.user.name %>
+        <% end %>
+
+        <% if @user.id == current_user.id %>
+
+        <% else %>
+        <% if @isRoom == true %>
+        <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+          <% else %>
+          <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, :value=> @user.id %>
+          <% end %>
+          <%= f.submit "チャットを始める" %>
+          <% end %>
+          <% end %>
+          <% end %>
+          <%= render "relationships/follow_button", user: @user %>
+
+          <% if current_user.id == @user.id %>
+          <div class="user-edit">
+            <%= link_to "編集する", edit_user_registration_path, class:"user-edit-text" %>
+          </div>
+          <% end %>
+  </div>
+
+
+  <div class="user-show-right">
+    <h2>筋トレ記録</h2>
+    <% @user.blogs.each do |t| %>
+    <%= t.user.name %>
+    <%= t.about %>
+    <% end %>
+
+    <h2>いいねした筋トレ記録</h2>
+    <% @user.loved_blogs.each do |t| %>
+    <%= t.user.name %>
+    <%= t.about %>
+    <% end %>
+  </div>
+
+</div>

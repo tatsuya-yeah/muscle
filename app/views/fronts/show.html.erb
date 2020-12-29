@@ -12,10 +12,8 @@
     </div>
 
     <div class="menu" id="menu">
-        <ul class="menu-box">
-            <li><%= link_to "おすすめ投稿", new_tweet_path %> </li>
+        <ul class="fronts-menu-box1">
             <li><%= link_to "おすすめ投稿一覧", tweets_path %></li>
-            <li><%= link_to "今日の筋トレを記録", new_blog_path %></li>
             <li><%= link_to "筋トレ記録一覧", blogs_path %></li>
             <li><%= link_to "おうちトレーニー", users_path %></li>
             <li><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
@@ -23,10 +21,98 @@
             <li><%= link_to "マッチョ診断", new_person_path %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         </ul>
-
+        <ul class="fronts-menu-box2">
+            <li><a class="modal1-open" id="modal1-open">おすすめ投稿</a></li>
+            <li><a class="modal2-open" id="modal2-open">今日の筋トレを投稿</a></li>
+        </ul>
     </div>
 </div>
 <div class="mask" id="mask"></div>
+
+<div class="modal1" id="modal1">
+    <div class="tweet-new-center">
+        <div class="modal1-top">
+            <h2>おすすめ投稿</h2>
+            <a class="modal1-close" id="modal1-close">×</a>
+        </div>
+        <%= form_for @tweet do |f| %>
+        <div class="field">
+            <%= f.label :タイトル, class:"tweet-label" %>
+            <%= f.text_field :title, :size => 100, :placeholder => "タイトルを入力してください。", class:"tweet-field" %>
+        </div>
+        <div class="field">
+            <%= f.label :部位, class:"tweet-label tweet-part" %>
+            <%= f.select :part,
+        [["腹筋", "腹筋"],
+        ["肩", "肩"],
+        ["背中", "背中"]], include_blank: "選択して下さい" %>
+
+        </div>
+        <div class="field">
+            <%= f.label :種目, class:"tweet-label" %>
+            <%= f.text_field :training, :size => 100, :placeholder => "種目を入力してください。", class:"tweet-field"  %>
+        </div>
+        <div class="field">
+            <%= f.label :内容, class:"tweet-label" %>
+            <%= f.text_field :about, :size => 100, :placeholder => "内容を入力してください。", class:"tweet-field" %>
+        </div>
+        <div class="field">
+            <%= f.label :画像, class:"tweet-label" %>
+            <%= f.file_field :image %>
+        </div>
+        <div class="field">
+            <%= f.label :YouTube, class:"tweet-label" %>
+            <%= f.url_field :youtube_url, :size => 100, :placeholder => "YouTubeのURLを入力してください。", class:"tweet-field"  %>
+        </div>
+        <div class="submit">
+            <%= f.submit "投稿する", class:"submit-text" %>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+<div class="mask1" id="mask1"></div>
+
+
+<div class="modal2" id="modal2">
+    <div class="blog-new">
+        <div class="modal2-top">
+            <h2>今日の筋トレを記録</h2>
+            <a class="modal2-close" id="modal2-close">×</a>
+        </div>
+        <%= form_with(model: @blog, local: true) do |f| %>
+        <div class="field">
+            <%= f.label :部位, class:"blog-label blog-part" %>
+            <%= f.select :part,
+            [["腹筋", "腹筋"],
+            ["肩", "肩"]], include_blank: "選択して下さい" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :種目, class:"blog-label" %>
+            <%= f.text_field :training, :size => 30, :placeholder => "種目を入力してください。", class:"blog-field" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :感想, class:"blog-label" %>
+            <%= f.text_field :about, :size => 30, :placeholder => "感想を入力してください。", class:"blog-field"  %>
+        </div>
+
+        <div class="time">
+            <%= f.label :トレーニング日, class:"blog-label" %>
+            <%= f.datetime_select :start_time %>
+        </div>
+
+
+        <div class="submit">
+            <%= f.submit "投稿する", class:"submit-text" %>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+<div class="mask2" id="mask2"></div>
+
 
 
 
@@ -47,15 +133,45 @@
 
     <div class="front-blog">
         <h2>あなたの最近の筋トレ記録</h2>
-        <% @my_blogs.each do |blog| %>
+        <% @my_blogs.each do |t| %>
         <div class="front-blog-self">
-            <ul>
-                <li><%= blog.start_time.strftime("%Y-%m-%d") %></li>
-                <div class="front-blog-detail">
-                    <li><%= blog.part %></li>
-                    <li><%= blog.training %></li>
-                    <li><%= link_to '詳細へ', blog_path(blog.id), class:"front-blog-detail-detail" %></li>
-                </div>
+            <ul class="front-blog-self-box1">
+                <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+                <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
+                <li><%= t.created_at %></li>
+            </ul>
+            <ul class="front-blog-self-box2">
+                <li><%= t.part %></li>
+                <li><%= t.training %></li>
+            </ul>
+            <ul class="front-blog-self-box3">
+                <% if user_signed_in? %>
+                <% if current_user.already_loved?(t) %>
+                <%= link_to blog_love_path(id: t.id, blog_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.loves.count %>
+                <% end %>
+                <% else %>
+                <%= link_to blog_loves_path(id: t.id, blog_id: t.id), method: :post do %>
+                <i class="fas fa-heart"></i><%= t.loves.count %>
+                <% end %>
+                <% end %>
+                <% else %>
+                <li><i class="fas fa-heart"></i><%= t.loves.count %></li>
+                <% end %>
+                <li><%= link_to  blog_path(t.id) do %>
+                    <i class="far fa-eye"></i>
+                    <% end %>
+                </li>
+                <% if user_signed_in? && current_user.id == t.user_id %>
+                <li><%= link_to edit_blog_path(t.id) do   %>
+                    <i class="far fa-edit"></i>
+                    <% end %>
+                </li>
+                <li><%= link_to blog_path(t.id), method: :delete do %>
+                    <i class="fas fa-trash"></i>
+                    <% end %>
+                </li>
+                <% end %>
             </ul>
         </div>
         <% end %>

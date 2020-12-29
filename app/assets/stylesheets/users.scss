@@ -1,3 +1,273 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.header-user-show {
+    background-color: #eee;
+    height: 10vh;
+    width: 100%;
+    font-weight: normal;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
+
+    ul {
+        margin: .5%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            line-height: 10vh;
+        }
+
+
+        li:first-of-type {
+            margin-left: 3%;
+        }
+
+        li:nth-of-type(2) {
+            height: 10vh;
+            border-bottom: 5px solid #d37800;
+            color: #d37800;
+            width: 12vw;
+        }
+    }
+}
+
+.users-container {
+    background-color: #eee;
+    display: flex;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+}
+
+
+.user-show-left {
+    width: 33vw;
+    background-color: #fff;
+    margin: 0.5%;
+    height: 90vh;
+    .user-tweet {
+        height: 70vh;
+        overflow: scroll;
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding: 5% 0 5% 3% ;
+        }
+    }
+    .user-tweet-self {
+        font-weight: normal;
+        height: 20vh;
+        border-bottom: #ddd 1px solid;
+
+        .user-tweet-self-box1 {
+            display: flex;
+
+            img {
+                border-radius: 50%;
+                margin: .5vh 0 0 .5vw;
+            }
+
+            li {
+                font-weight: bold;
+                margin-left: 1vw;
+            }
+        }
+
+        .user-tweet-self-box2 {
+            margin-left: 5vw;
+
+            li {
+                padding-top: .1vh;
+            }
+        }
+
+        .user-tweet-self-box3 {
+            display: flex;
+            margin-top: 1vh;
+
+            li {
+                margin-left: -2vw;
+            }
+
+            a {
+                display: inline-block;
+                margin-left: 3vw;
+            }
+        }
+    }
+}
+
+.user-show-center {
+    background-color: #fff;
+    margin: 0.5%;
+    width: 33vw;
+    font-weight: normal;
+    height: 90vh;
+    .top-detail {
+        padding-top: 1%;
+        display: flex;
+    }
+
+    img {
+        display: inline-block;
+        margin-left: 25%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .show-name {
+        font-weight: bold;
+        line-height: 50px;
+        padding-left: 5%;
+    }
+    .show-name:hover {
+        color: #d37800;
+        cursor: pointer;
+    }
+
+    .user-edit {
+        margin-top: 5%;
+        width: 235px;
+        height: 50px;
+        border-radius: 12% / 50%;
+        border: #03a9f4 solid 1px;
+
+        a {
+            color: #03a9f4;
+        }
+
+        .user-edit-text {
+            display: table;
+            line-height: 50px;
+            margin: 0 auto;
+        }
+    }
+
+    .balloon1 {
+        position: relative;
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 7px 10px;
+        min-width: 120px;
+        max-width: 100%;
+        color: #555;
+        font-size: 16px;
+        background: #FFF;
+        border: solid 3px #555;
+        box-sizing: border-box;
+    }
+
+    .balloon1:before {
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: 50%;
+        margin-left: -15px;
+        border: 12px solid transparent;
+        border-bottom: 12px solid #FFF;
+        z-index: 2;
+    }
+
+    .balloon1:after {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        margin-left: -17px;
+        border: 14px solid transparent;
+        border-bottom: 14px solid #555;
+        z-index: 1;
+    }
+
+    .balloon1 p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+.user-show-right {
+    width: 33vw;
+    height: 90vh;
+    background-color: #fff;
+    margin: 0.5%;
+}
+
+
+.header-user-index {
+    background-color: #eee;
+    height: 10vh;
+    width: 100%;
+    font-weight: normal;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    font-weight: bold;
+
+    ul {
+        margin: .5%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            line-height: 10vh;
+        }
+
+
+        li:first-of-type {
+            margin-left: 3%;
+        }
+
+        li:nth-of-type(2) {
+            height: 10vh;
+            border-bottom: 5px solid #d37800;
+            color: #d37800;
+            width: 12vw;
+        }
+    }
+}
+.user-index-center {
+    width: 50%;
+    background-color: #fff;
+    margin: .5%;
+    .search-wrapper {
+        display: table;
+        margin: 0 auto;
+        h3 {
+            font-weight: normal;
+            display: table;
+            margin: 5% auto;
+        }
+        .search-field {
+            height: 3vh;
+            width: 20vw;
+            border-radius: 5%;
+            outline: none;
+        }
+
+    }
+    .user-wrapper {
+        .user-self-wrapper {
+            height: 10vh;
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+        img {
+            display: inline-block;
+            margin: 8% 0 0 8%;
+            border-radius: 50%;
+        }
+        p {
+            line-height: 50px;
+            margin-left: 3%;
+        }
+        a:hover {
+            color: #d37800;
+        }
+    }
+}

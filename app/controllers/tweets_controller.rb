@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
     def index
         @tweets =Tweet.all.order(created_at: :desc) 
         @all_ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(10).pluck(:tweet_id))
+        @tweet = Tweet.new
     end
 
     def new 
