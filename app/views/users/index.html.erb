@@ -25,10 +25,12 @@
     <div class="search-wrapper">
       <% if user_signed_in? %>
       <h3>おうちトレーニーを検索</h3>
-      <%= form_tag({controller:"users",action:"index"}, method: :get) do %>
-      <%= text_field_tag :search,  '', class: 'search-field' %>
-      <%= submit_tag '検索する'  %>
-      <% end %>
+      <div class="search-box">
+        <%= form_tag({controller:"users",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search, "", class: 'search-field', placeholder:"検索..." %>
+        <%= submit_tag '検索する', class:"search-button"  %>
+        <% end %>
+      </div>
     </div>
     <div class="user-wrapper">
       <% @users.each do |u| %>

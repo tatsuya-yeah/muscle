@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="stylesheets/relationships.css">
+
+
+<% @my_user.followings.each do |t| %>
+<li><%= t.name %></li>
+<% end %>
+<% @my_user.followers.each do |t| %>
+<li><%= t.name %></li>
+<% end %>

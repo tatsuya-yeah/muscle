@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
           has_many :tweets, dependent: :destroy
           validates :name, presence: true
-          validates :profile, length: { maximum: 200 }
+          validates :profile, length: { maximum: 100 }
 
           has_many :likes, dependent: :destroy
           has_many :liked_tweets, through: :likes, source: :tweet

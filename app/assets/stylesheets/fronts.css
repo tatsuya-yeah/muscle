@@ -168,6 +168,9 @@
 }
 
 .modal1 {
+  background-color: #fff;
+  border-radius: 3%;
+  width: 44vw;
   z-index: 5;
   position: fixed;
   top: 50%;
@@ -181,9 +184,6 @@
 }
 
 .modal1 .tweet-new-center {
-  background-color: #fff;
-  border-radius: 3%;
-  width: 93%;
   margin: 0.5%;
   font-weight: normal;
 }
@@ -201,10 +201,10 @@
 
 .modal1 .tweet-new-center .modal1-top h2 {
   font-size: 1.5rem;
-  padding: 3% 5%;
   color: #d37800;
-  border-bottom: 5px solid #d37800;
-  margin-bottom: 5%;
+  border-bottom: 2px solid #d37800;
+  margin: 5% 0 5% 5%;
+  padding-bottom: 3%;
 }
 
 .modal1 .tweet-new-center .modal1-top .modal1-close {
@@ -228,13 +228,19 @@
 }
 
 .modal1 .tweet-new-center .tweet-field {
-  width: 45vw;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 40vw;
   height: 5vh;
+  margin-left: 5%;
 }
 
 .modal1 .tweet-new-center #tweet_part {
   width: 10vw;
   height: 5vh;
+  margin-left: 5%;
+  border-left: 1px solid #111;
 }
 
 .modal1 .tweet-new-center #tweet_part:hover {
@@ -267,8 +273,8 @@
   opacity: .9;
 }
 
-.modal1 .tweet-new-center .tweet-field:hover {
-  border: #d37800 3px solid;
+.modal1 .tweet-new-center .tweet-field:focus {
+  border-bottom: #d37800 2px solid;
 }
 
 .mask1 {
@@ -297,6 +303,9 @@
 
 .modal2 {
   z-index: 5;
+  background-color: #fff;
+  border-radius: 3%;
+  width: 44vw;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -309,9 +318,6 @@
 }
 
 .modal2 .blog-new {
-  background-color: #fff;
-  border-radius: 3%;
-  width: 93%;
   margin: 0.5%;
   font-weight: normal;
 }
@@ -329,10 +335,10 @@
 
 .modal2 .blog-new .modal2-top h2 {
   font-size: 1.5rem;
-  padding: 3% 5%;
   color: #d37800;
-  border-bottom: 5px solid #d37800;
-  margin-bottom: 5%;
+  border-bottom: 2px solid #d37800;
+  margin: 5% 0 5% 5%;
+  padding-bottom: 3%;
 }
 
 .modal2 .blog-new .modal2-top .modal2-close {
@@ -356,13 +362,18 @@
 }
 
 .modal2 .blog-new .blog-field {
-  width: 45vw;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 40vw;
   height: 5vh;
+  margin-left: 5%;
 }
 
 .modal2 .blog-new #blog_part {
   width: 10vw;
   height: 5vh;
+  margin-left: 5%;
 }
 
 .modal2 .blog-new #blog_part:hover {
@@ -395,8 +406,8 @@
   opacity: .9;
 }
 
-.modal2 .blog-new .blog-field:hover {
-  border: #d37800 3px solid;
+.modal2 .blog-new .blog-field:focus {
+  border-bottom: #d37800 3px solid;
 }
 
 .mask2 {

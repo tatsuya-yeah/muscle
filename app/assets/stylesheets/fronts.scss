@@ -163,6 +163,9 @@
 }
 
 .modal1 {
+    background-color: #fff;
+    border-radius: 3%;
+    width: 44vw;
     z-index: 5;
     position: fixed;
     top: 50%;
@@ -172,9 +175,6 @@
     visibility: hidden;
     transition: .3s;
     .tweet-new-center {
-        background-color: #fff;
-        border-radius: 3%;
-        width: 93%;
         margin: 0.5%;
         font-weight: normal;
 
@@ -186,10 +186,10 @@
             }
             h2 {
                 font-size: 1.5rem;
-                padding: 3% 5%;
                 color: #d37800;
-                border-bottom: 5px solid #d37800;
-                margin-bottom: 5%;
+                border-bottom: 2px solid #d37800;
+                margin: 5% 0 5% 5%;
+                padding-bottom: 3%;
             }
             .modal1-close {
                 margin-left: 27vw;
@@ -213,13 +213,19 @@
         }
 
         .tweet-field {
-            width: 45vw;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            width: 40vw;
             height: 5vh;
+            margin-left: 5%;
         }
 
         #tweet_part {
             width: 10vw;
             height: 5vh;
+            margin-left: 5%;
+            border-left: 1px solid #111;
         }
 
         #tweet_part:hover {
@@ -252,8 +258,8 @@
             opacity: .9;
         }
 
-        .tweet-field:hover {
-            border: #d37800 3px solid;
+        .tweet-field:focus {
+            border-bottom: #d37800 2px solid;
         }
     }
 }
@@ -281,6 +287,9 @@
 
 .modal2 {
     z-index: 5;
+    background-color: #fff;
+    border-radius: 3%;
+    width: 44vw;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -289,9 +298,6 @@
     visibility: hidden;
     transition: .3s;
     .blog-new {
-        background-color: #fff;
-        border-radius: 3%;
-        width: 93%;
         margin: 0.5%;
         font-weight: normal;
 
@@ -303,10 +309,10 @@
             }
             h2 {
                 font-size: 1.5rem;
-                padding: 3% 5%;
                 color: #d37800;
-                border-bottom: 5px solid #d37800;
-                margin-bottom: 5%;
+                border-bottom: 2px solid #d37800;
+                margin: 5% 0 5% 5%;
+                padding-bottom: 3%;
             }
             .modal2-close {
                 margin-left: 22vw;
@@ -330,13 +336,18 @@
         }
 
         .blog-field {
-            width: 45vw;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            width: 40vw;
             height: 5vh;
+            margin-left: 5%;
         }
 
         #blog_part {
             width: 10vw;
             height: 5vh;
+            margin-left: 5%;
         }
 
         #blog_part:hover {
@@ -369,8 +380,8 @@
             opacity: .9;
         }
 
-        .blog-field:hover {
-            border: #d37800 3px solid;
+        .blog-field:focus {
+            border-bottom: #d37800 3px solid;
         }
     }
 }

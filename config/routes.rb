@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy, :show]
   resources :fronts, only: [:index, :show]
   resources :graphs
   resources :persons

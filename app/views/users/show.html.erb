@@ -12,62 +12,14 @@
 
 
 
-  <div class="user-show-left">
-    <div class="user-tweet">
-      <h2>おすすめ投稿</h2>
-      <% @user.tweets.each do |t| %>
-      <div class="user-tweet-self">
-        <ul class="user-tweet-self-box1">
-          <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
-          <li><%= t.user.name %></li>
-          <li><%= t.created_at %></li>
-        </ul>
-        <ul class="user-tweet-self-box2">
-          <li><%= t.title %></li>
-          <li><%= t.part %></li>
-          <li><%= t.training %></li>
-        </ul>
-        <ul class="user-tweet-self-box3">
-          <% if user_signed_in? %>
-          <% if current_user.already_liked?(t) %>
-          <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
-          <i class="fas fa-heart"></i><%= t.likes.count %>
-          <% end %>
-          <% else %>
-          <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
-          <i class="fas fa-heart"></i><%= t.likes.count %>
-          <% end %>
-          <% end %>
-          <% else %>
-          <li><i class="fas fa-heart"></i><%= t.likes.count %></li>
-          <% end %>
-          <li><%= link_to  tweet_path(t.id) do %>
-            <i class="far fa-eye"></i>
-            <% end %>
-          </li>
-          <% if user_signed_in? && current_user.id == t.user_id %>
-          <li><%= link_to edit_tweet_path(t.id) do   %>
-            <i class="far fa-edit"></i>
-            <% end %>
-          </li>
-          <li><%= link_to tweet_path(t.id), method: :delete do %>
-            <i class="fas fa-trash"></i>
-            <% end %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
-    </div>
-
-
-    <h2>いいねしたおすすめ投稿</h2>
-    <% @user.liked_tweets.each do |t| %>
-    <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
-    <li><%= t.user.name %></li>
-    <li><%= t.about %></li>
-    <% end %>
-  </div>
+  <ul class="user-left">
+    <li><i class="far fa-address-card"></i>プロフィール</li>
+    <li><i class="far fa-comment-alt"></i><%= link_to "おすすめ投稿一覧", tweets_path %></li>
+    <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
+    <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
+    <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
+    <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+  </ul>
 
   <div class="user-show-center">
     <div class="top-detail">
@@ -78,47 +30,127 @@
       <p><%= @user.profile %></p>
     </div>
 
-    <h2>フォロー中のユーザー<h2>
-        <% @user.relationships.each do |t| %>
-        <%= t.user.name %>
-        <% end %>
+    <ul class="fo">
+      <li><%= @user.followings.count %>フォロー中</li>
+      <li><a href="/relationships/<%= @user.id %>"><%= @user.followers.count %>フォロワー</a></li>
+    </ul>
 
-        <% if @user.id == current_user.id %>
+    <% if @user.id == current_user.id %>
 
-        <% else %>
-        <% if @isRoom == true %>
-        <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-          <% else %>
-          <%= form_for @room do |f| %>
-          <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, :value=> @user.id %>
-          <% end %>
-          <%= f.submit "チャットを始める" %>
-          <% end %>
-          <% end %>
-          <% end %>
-          <%= render "relationships/follow_button", user: @user %>
+    <% else %>
+    <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+      <% else %>
+      <%= form_for @room do |f| %>
+      <%= fields_for @entry do |e| %>
+      <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める", :class=>"start-chat" %>
+      <% end %>
+      <% end %>
+      <% end %>
+      <%= render "relationships/follow_button", user: @user %>
 
-          <% if current_user.id == @user.id %>
-          <div class="user-edit">
-            <%= link_to "編集する", edit_user_registration_path, class:"user-edit-text" %>
-          </div>
-          <% end %>
+      <% if current_user.id == @user.id %>
+      <div class="user-edit">
+        <%= link_to "編集する", edit_user_registration_path, class:"user-edit-text" %>
+      </div>
+      <% end %>
   </div>
 
 
   <div class="user-show-right">
-    <h2>筋トレ記録</h2>
-    <% @user.blogs.each do |t| %>
-    <%= t.user.name %>
-    <%= t.about %>
-    <% end %>
+    <h2><%= @user.name %>さんの筋トレ記録</h2>
+    <div class="user-blog">
+      <% @user.blogs.each do |t| %>
+      <div class="user-blog-self">
+        <ul class="user-blog-self-box1">
+          <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+          <li><%= t.user.name %></li>
+          <li><%= t.created_at %></li>
+        </ul>
+        <ul class="user-blog-self-box2">
+          <li><%= t.part %></li>
+          <li><%= t.training %></li>
+          <li><%= t.about %></li>
+        </ul>
+        <ul class="user-blog-self-box3">
+          <% if user_signed_in? %>
+          <% if current_user.already_loved?(t) %>
+          <%= link_to blog_love_path(id: t.id, blog_id: t.id), method: :delete do %>
+          <i class="fas fa-heart"></i><%= t.loves.count %>
+          <% end %>
+          <% else %>
+          <%= link_to blog_loves_path(id: t.id, blog_id: t.id), method: :post do %>
+          <i class="fas fa-heart"></i><%= t.loves.count %>
+          <% end %>
+          <% end %>
+          <% else %>
+          <li><i class="fas fa-heart"></i><%= t.loves.count %></li>
+          <% end %>
+          <li><%= link_to  blog_path(t.id) do %>
+            <i class="far fa-eye"></i>
+            <% end %>
+          </li>
+          <% if user_signed_in? && current_user.id == t.user_id %>
+          <li><%= link_to edit_blog_path(t.id) do   %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </li>
+          <li><%= link_to blog_path(t.id), method: :delete do %>
+            <i class="fas fa-trash"></i>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
 
-    <h2>いいねした筋トレ記録</h2>
-    <% @user.loved_blogs.each do |t| %>
-    <%= t.user.name %>
-    <%= t.about %>
-    <% end %>
+    <h2><%= @user.name %>さんがいいねした筋トレ記録</h2>
+    <div class="user-blog">
+      <% @user.loved_blogs.each do |t| %>
+      <div class="user-blog-self">
+        <ul class="user-blog-self-box1">
+          <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+          <li><%= t.user.name %></li>
+          <li><%= t.created_at %></li>
+        </ul>
+        <ul class="user-blog-self-box2">
+          <li><%= t.part %></li>
+          <li><%= t.training %></li>
+          <li><%= t.about %></li>
+        </ul>
+        <ul class="user-blog-self-box3">
+          <% if user_signed_in? %>
+          <% if current_user.already_loved?(t) %>
+          <%= link_to blog_love_path(id: t.id, blog_id: t.id), method: :delete do %>
+          <i class="fas fa-heart"></i><%= t.loves.count %>
+          <% end %>
+          <% else %>
+          <%= link_to blog_loves_path(id: t.id, blog_id: t.id), method: :post do %>
+          <i class="fas fa-heart"></i><%= t.loves.count %>
+          <% end %>
+          <% end %>
+          <% else %>
+          <li><i class="fas fa-heart"></i><%= t.loves.count %></li>
+          <% end %>
+          <li><%= link_to  blog_path(t.id) do %>
+            <i class="far fa-eye"></i>
+            <% end %>
+          </li>
+          <% if user_signed_in? && current_user.id == t.user_id %>
+          <li><%= link_to edit_blog_path(t.id) do   %>
+            <i class="far fa-edit"></i>
+            <% end %>
+          </li>
+          <li><%= link_to blog_path(t.id), method: :delete do %>
+            <i class="fas fa-trash"></i>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
   </div>
-
-</div>
