@@ -2,85 +2,88 @@
 
 
 
-<div class="header-tweet-show">
-  <ul>
-    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
-    <li>おすすめ投稿詳細</li>
-    <li><%= link_to "おすすめ投稿一覧", tweets_path %></li>
-  </ul>
+<div class="header-page" data-turbolinks="false">
+<h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span class="description">Home Trainee</span></a></h1>
+
 </div>
 
 
 <div class="tweets-container">
-  <div class="tweet-left">
-    <li><i class="fas fa-home"></i><%= link_to "マイページ", front_path(id: current_user), class:"function" %></li>
-    <li><i class="far fa-comment-alt"></i>おすすめ投稿詳細</li>
-    <li><i class="far fa-comment-dots"></i><%= link_to "おすすめ投稿", new_tweet_path %></li>
-    <li><i class="far fa-comment-dots"></i><%= link_to "今日の筋トレを記録", new_blog_path %> </li>
-    <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
-    <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
-    <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
-    <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
-    <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
-  </div>
+
   <div class="tweet-show-center">
-    <div class="detail">
-      <p><%= @tweet.title %></p>
-      <p><%= @tweet.about %></p>
-      <p><%= @tweet.part %></p>
-      <p><%= @tweet.training %></p>
-      <p><%= @tweet.about %></p>
-      <p><%= @tweet.created_at %></p>
-      <p>
-        <strong>Youtube url:</strong>
-        <iframe width="200" height="100" src="https://www.youtube.com/embed/
+    <h1>おすすめ投稿詳細</h1>
+    <div class="tweet">
+      <ul class="top-tweet">
+        <li><%= image_tag @tweet.user.image_url, size: "50x50" if @tweet.user.image? %> </li>
+        <li><a href="/users/<%= @tweet.user.id %>"><%= @tweet.user.name %></a></li>
+        <li><%= @tweet.created_at %></li>
+      </ul>
+      <ul class="detail-tweet">
+        <li class="title">おすすめ内容</li>
+        <li class="content"><%= @tweet.title %></li>
+      </ul>
+      <ul class="detail-tweet">
+        <li class="title">筋トレ部位</li>
+        <li class="content"><%= @tweet.part %></li>
+      </ul>
+      <ul class="detail-tweet">
+        <li class="title">トレーニング名</li>
+        <li class="content"><%= @tweet.training %></li>
+      </ul>
+      <ul class="detail-tweet">
+        <li class="title">コメント</li>
+        <li class="content"><%= @tweet.about %></li>
+      </ul>
+      <div class="imagevideo">
+        <%= image_tag @tweet.image_url, size: "250x200" if @tweet.image? %>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/
       <%= @tweet.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; 
       encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </p>
-      <% if user_signed_in? %>
-      <% if current_user.already_liked?(@tweet) %>
-      <%= link_to tweet_like_path(@tweet), method: :delete do %>
-      <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-      <% end %>
-      <% else %>
-      <%= link_to tweet_likes_path(@tweet), method: :post do %>
-      <i class="far fa-heart"></i><%= @tweet.likes.count %>
-      <% end %>
-      <% end %>
-      <% else %>
-      <i class="far fa-heart"></i><%= @tweet.likes.count %>
-      <% end %>
-
-
-    </div>
-    <h2>いいねしたユーザー</h2>
-    <% @tweet.liked_users.each do |user| %>
-    <li><%= user.email %></li>
-    <% end %>
-
-    <div class="comment-wrapper">
-      <p>コメント一覧</p>
-      <% @comments.each do |c| %>
-      <div>
-        <%= c.user.email unless c.user.blank? %>
-        <br>
-        <%= c.content %>
       </div>
-      <br>
-      <% end %>
+      <div class="good">
 
-      <% if user_signed_in? %>
-      <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-      <i class="far fa-comments"></i> コメントする
-      <% end %>
-      <% end %>
-      <% end %>
+        <% if user_signed_in? %>
+        <% if current_user.already_liked?(@tweet) %>
+        <%= link_to tweet_like_path(@tweet), method: :delete do %>
+        <i class="fas fa-heart red-heart"></i><span class="red-count"><%= @tweet.likes.count %></span>
+        <% end %>
+        <% else %>
+        <%= link_to tweet_likes_path(@tweet), method: :post do %>
+        <i class="far fa-heart"></i><%= @tweet.likes.count %>
+        <% end %>
+        <% end %>
+        <% else %>
+        <i class="far fa-heart"></i><%= @tweet.likes.count %>
+        <% end %>
+        <div class="good-user">
+          <h2>いいねしたユーザー</h2>
+          <% @tweet.liked_users.each do |t| %>
+          <li><%= image_tag t.image_url, size: "50x50" if t.image? %> </li>
+          <li><%= t.name %></li>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="comment-wrapper">
+        <p>コメント一覧</p>
+        <% @comments.each do |c| %>
+        <div>
+          <%= c.user.email unless c.user.blank? %>
+          <br>
+          <%= c.content %>
+        </div>
+        <br>
+        <% end %>
+
+        <% if user_signed_in? %>
+        <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+        <%= f.text_area :content %>
+        <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
     </div>
-    <%= link_to "編集する", edit_tweet_path(@tweet.id) %>
-  </div>
-  <div class="tweet-show-right">
-
   </div>
 </div>

@@ -90,6 +90,7 @@
 .menu.active .menu-box1 {
   opacity: 1;
   visibility: visible;
+  font-family: 'Vollkorn', serif;
 }
 
 .menu.active .menu-box1 li {
@@ -98,6 +99,7 @@
   display: table;
   cursor: pointer;
   padding-left: 3vw;
+  font-size: 2.5rem;
 }
 
 .menu.active .menu-box1 li:hover {
@@ -107,6 +109,7 @@
 }
 
 .menu.active .menu-box2 {
+  font-family: 'Vollkorn', serif;
   opacity: 1;
   visibility: visible;
 }
@@ -116,6 +119,8 @@
   padding-bottom: 10px;
   cursor: pointer;
   padding-left: 3vw;
+  color: #fff;
+  font-size: 1.5rem;
 }
 
 .menu.active .menu-box2 li:hover {
@@ -146,6 +151,7 @@
   font-size: 30px;
   padding-bottom: 20px;
   display: table;
+  color: #fff;
   padding-left: 3vh;
 }
 
@@ -391,8 +397,24 @@
   padding: 10vh 0;
 }
 
+.main-wrapper .flex-target .fas {
+  padding-right: 2%;
+}
+
+.main-wrapper .flex-target .far {
+  padding-right: 2%;
+}
+
 .main-wrapper .flex-target .text {
   padding-top: 15vh;
+}
+
+.main-wrapper .flex-target img {
+  border-radius: 5%;
+}
+
+.main-wrapper .flex-target h2 {
+  padding-bottom: 5%;
 }
 
 .main-wrapper .flex-target:nth-child(odd) {
@@ -407,11 +429,11 @@
 }
 
 .main-wrapper .flex-target:nth-child(even) .text {
-  padding-left: 5vw;
+  padding-left: 8vw;
 }
 
 .main-wrapper .flex-target:nth-child(even) img {
-  margin-left: 5vw;
+  margin-left: 8vw;
 }
 
 .animation-text {

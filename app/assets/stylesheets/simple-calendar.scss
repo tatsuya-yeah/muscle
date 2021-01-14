@@ -1,14 +1,16 @@
 .simple-calendar {
-    background-color: #eee;
-    margin-top: 10vh;
     width: 70vw;
     height: 80vh;
+    border: 1px solid #ddd;
 
     h1 {
         padding: 2% 5%;
         font-size: 1.5rem;
         border-bottom: 1px solid #ccc;
         width: 70vw;
+        font-weight: normal;
+        margin: 0 auto;
+        width: 22vw;
     }
 
     .calendar-heading {
@@ -17,17 +19,18 @@
         width: 26vw;
         display: table;
         height: 10vh;
+
         .calendar-title {
             line-height: 10vh;
             color: #aaa;
             margin: 0 5%;
 
 
-        .month:hover {
-            color: brown;
+            .month:hover {
+                color: brown;
+            }
         }
     }
-}
 
     .table {
         font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
@@ -35,3 +38,4 @@
         font-weight: bold;
     }
 }
+

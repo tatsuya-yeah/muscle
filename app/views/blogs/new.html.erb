@@ -17,7 +17,7 @@
         <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
         <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
         <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
-        <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+        <li><i class="fas fa-dumbbell"></i><%= link_to "体型診断", new_person_path %></li>
     </div>
     <div class="blog-new-center">
         <%= form_with(model: @blog, local: true) do |f| %>

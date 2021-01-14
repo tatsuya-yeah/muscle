@@ -1,18 +1,35 @@
-<h1>BMI計算</h1>
-<%= form_with(model: @person, local: true) do |f| %>
+<link rel="stylesheet" href="stylesheets/persons.css">
+
+
+<div class="header-page" data-turbolinks="false">
+<h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span class="description">Home Trainee</span></a></h1>
+</div>
+<div class="diagnose">
+
+    <h2>体型診断</h2>
+
+    <%= form_with(model: @person, local: true) do |f| %>
 
     <div class="field">
-        <%= f.label :体重 %>
-        <%= f.text_field :weight, :size => 30 %>
+        <%= f.label :体重, class:"diagnose-label" %>
+        <%= f.text_field :weight, :size => 30, :placeholder => "体重を入力してください。", class:"diagnose-field" %>
     </div>
 
     <div class="field">
-        <%= f.label :身長 %>
-        <%= f.text_field :height, :size => 30 %>
+        <%= f.label :身長, class:"diagnose-label"  %>
+        <%= f.text_field :height, :size => 30, :placeholder => "身長を入力してください。", class:"diagnose-field"  %>
     </div>
 
-    <div class="submit">
-        <%= f.submit %>
+    <div class="field">
+        <%= f.label :体脂肪率, class:"diagnose-label" %>
+        <%= f.text_field :fat, :size => 30, :placeholder => "体脂肪率を入力してください。", class:"diagnose-field"  %>
     </div>
-    
-<% end %>
+
+
+
+    <div class="actions">
+        <%= f.submit "体型診断をする", class:"diagnose-button"  %>
+    </div>
+
+    <% end %>
+</div>

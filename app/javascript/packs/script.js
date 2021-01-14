@@ -5,6 +5,12 @@ document.getElementById("menubutton").addEventListener("click", function() {
     document.getElementById("mask").classList.toggle("active");
 })
 
+window.onpageshow = function() {
+        window.location.onload() 
+};
+
+
+
 window.onload = function() {
     document.getElementById("animation-picture1 animation-target").classList.add("show");  
     document.getElementById("animation-picture2 animation-target").classList.add("show"); 
@@ -58,7 +64,6 @@ document.getElementById("modal3-open").addEventListener("click", function() {
 })
 
 
-console.log("rfcgvhbjnk");
 
 
 

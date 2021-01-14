@@ -1,14 +1,9 @@
 <link rel="stylesheet" href="stylesheets/blogs.css">
 
-<div class="header-blog-index">
-  <ul>
-    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
-    <li><i class="far fa-comment-alt"></i>筋トレ記録一覧</li>
-    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
-  </ul>
+<div class="header-page" data-turbolinks="false">
+<h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span class="description">Home Trainee</span></a></h1>
 </div>
 
-<p id="notice"><%= notice %></p>
 
 
 <div class="blogs-container">
@@ -18,15 +13,18 @@
     <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
     <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
     <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
-    <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
-    <li><%= link_to "今日の筋トレを記録", new_blog_path %> </li>
+    <li><i class="fas fa-dumbbell"></i><%= link_to "体型診断", new_person_path %></li>
   </div>
 
   <div class="blog-index-center">
     <% @blogs.each do |t| %>
     <div class="blog">
       <ul class="top-blog">
-        <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+      <% if t.user.image? %>
+      <li><img src='<%= t.user.image %>' class="icon", size: "50x50" alt="ユーザーアイコン"></li>
+      <% else %>
+      <li><image src="/assets/8.png" class="icon", size: "50x50" alt="ユーザーアイコン" %></li>
+          <% end %>
         <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
         <li class="content"><%= t.start_time.strftime("%Y-%m-%d %H:%M") %></li>
       </ul>
@@ -46,7 +44,7 @@
         <% if user_signed_in? %>
         <% if current_user.already_loved?(t) %>
         <%= link_to blog_love_path(id: t.id, blog_id: t.id), method: :delete do %>
-        <i class="fas fa-heart"></i><%= t.loves.count %>
+        <i class="fas fa-heart red-heart"></i><span class="red-count"><%= t.loves.count %></span>
         <% end %>
         <% else %>
         <%= link_to blog_loves_path(id: t.id, blog_id: t.id), method: :post do %>
@@ -57,10 +55,6 @@
         <i class="fas fa-heart"></i><%= t.loves.count %>
         <% end %>
         <ul>
-          <li><%= link_to  blog_path(t.id) do %>
-            <i class="far fa-eye"></i>
-            <% end %>
-          </li>
           <% if user_signed_in? && current_user.id == t.user_id %>
           <li><%= link_to edit_blog_path(t.id) do   %>
             <i class="far fa-edit"></i>
@@ -82,17 +76,17 @@
     <% @my_blogs.each do |t| %>
     <div class="blog-self">
       <ul class="blog-self-box1">
-        <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+      <% if t.user.image? %>
+      <li><img src='<%= t.user.image %>' class="icon", size: "50x50" alt="ユーザーアイコン"></li>
+      <% else %>
+      <li><image src="/assets/8.png" class="icon", size: "50x50" alt="ユーザーアイコン" %></li>
+          <% end %>
         <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
       </ul>
       <div class="blog-detail">
         <li><%= t.start_time.strftime("%Y-%m-%d") %></li>
         <li><%= t.part %></li>
         <li><%= t.training %></li>
-        <li><%= link_to  blog_path(t.id) do %>
-          <i class="far fa-eye"></i>
-          <% end %>
-        </li>
       </div>
     </div>
     <% end %>

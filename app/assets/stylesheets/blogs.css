@@ -1,51 +1,14 @@
 @charset "UTF-8";
 .header-blog-new {
-  background-color: #ddd;
   height: 10vh;
-  width: 100%;
-  font-weight: normal;
-  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
-  font-weight: bold;
-}
-
-.header-blog-new ul {
-  margin: .5%;
   background-color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.header-blog-new ul li {
-  line-height: 10vh;
-}
-
-.header-blog-new ul li:first-of-type {
-  margin-left: 3%;
-}
-
-.header-blog-new ul li:nth-of-type(2) {
-  height: 10vh;
-  border-bottom: 5px solid #d37800;
-  color: #d37800;
-  width: 13.5vw;
-  margin-left: 5%;
-}
-
-.header-blog-new ul li:nth-of-type(2) .far {
-  padding-right: 4%;
-  padding-left: 2%;
-}
-
-.header-blog-new ul li:nth-of-type(3) {
-  margin-right: 3%;
+  border-bottom: 1px solid #aaa;
+  -webkit-box-shadow: 0 0 5px 5px #aaa;
+          box-shadow: 0 0 5px 5px #aaa;
 }
 
 .blogs-container {
-  background-color: #ddd;
+  margin-top: 1%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,52 +58,15 @@
 }
 
 .header-blog-index {
-  background-color: #ddd;
   height: 10vh;
-  width: 100%;
-  font-weight: normal;
-  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
-  font-weight: bold;
-}
-
-.header-blog-index ul {
-  margin: .5%;
   background-color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.header-blog-index ul li {
-  line-height: 10vh;
-}
-
-.header-blog-index ul li:first-of-type {
-  margin-left: 3%;
-}
-
-.header-blog-index ul li:nth-of-type(2) {
-  height: 10vh;
-  border-bottom: 5px solid #d37800;
-  color: #d37800;
-  width: 10.5vw;
-  margin-left: 5%;
-}
-
-.header-blog-index ul li:nth-of-type(2) .far {
-  padding-right: 4%;
-  padding-left: 2%;
-}
-
-.header-blog-index ul li:nth-of-type(3) {
-  margin-right: 3%;
+  border-bottom: 1px solid #aaa;
+  -webkit-box-shadow: 0 0 5px 5px #aaa;
+          box-shadow: 0 0 5px 5px #aaa;
 }
 
 .blogs-container {
-  background-color: #ddd;
+  margin-top: 1%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -204,7 +130,9 @@
   padding-left: 2%;
 }
 
-.blogs-container .blog-index-center .blog .top-blog img {
+.blogs-container .blog-index-center .blog .top-blog .icon {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
@@ -272,7 +200,9 @@
   display: flex;
 }
 
-.blogs-container .blog-index-right .blog-self .blog-self-box1 img {
+.blogs-container .blog-index-right .blog-self .blog-self-box1 .icon {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin: .5vh 0 0 .5vw;
 }
@@ -291,5 +221,85 @@
 
 .blogs-container .blog-index-right .blog-self .blog-detail li {
   padding-top: .1vh;
+}
+
+.blog-edit {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: 0 0 3px 3px #ddd;
+          box-shadow: 0 0 3px 3px #ddd;
+  display: table;
+  margin: 3% auto;
+  background-color: #fff;
+  border-radius: 2%;
+  width: 50%;
+  font-weight: normal;
+}
+
+.blog-edit h2 {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 3% 5%;
+  color: #d37800;
+  border-bottom: 5px solid #d37800;
+  margin: 0 0 5% 3%;
+}
+
+.blog-edit .blog-label {
+  outline: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  border-left: 5px solid #d37800;
+  padding: 1% 0 1% 3%;
+  margin: 1%;
+}
+
+.blog-edit .blog-part {
+  width: 45vw;
+}
+
+.blog-edit .blog-field {
+  width: 45vw;
+  height: 5vh;
+}
+
+.blog-edit #blog_part {
+  width: 10vw;
+  height: 5vh;
+}
+
+.blog-edit #blog_part:focus {
+  border: #d37800 2px solid;
+}
+
+.blog-edit .submit {
+  width: 235px;
+  height: 50px;
+  border-radius: 12% / 50%;
+  border: #d37800 solid 1px;
+  background-color: #d37800;
+  margin: 10% auto;
+  display: table;
+}
+
+.blog-edit .submit .submit-text {
+  border: none;
+  background-color: #d37800;
+  color: #fff;
+  font-weight: bold;
+  line-height: 50px;
+  display: table;
+  font-size: 1.3rem;
+  margin: 0 auto;
+  height: 40px;
+}
+
+.blog-edit .submit:hover {
+  opacity: .9;
+}
+
+.blog-edit .blog-field:focus {
+  border: #d37800 3px solid;
+  outline: none;
 }
 /*# sourceMappingURL=blogs.css.map */

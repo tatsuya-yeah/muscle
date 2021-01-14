@@ -24,7 +24,6 @@ class TweetsController < ApplicationController
         tweet.user_id = current_user.id
         
         if tweet.save
-            flash[:notice] = '投稿が完了しました。'
             redirect_to :action => "index"
         else 
             redirect_to :action => "new"
@@ -39,12 +38,12 @@ class TweetsController < ApplicationController
 
     def edit
         @tweet = Tweet.find(params[:id])
-      end
+    end
 
     def update
         tweet = Tweet.find(params[:id])
         if tweet.update(tweet_params)
-            redirect_to :action => "show", :id => tweet.id
+            redirect_to :action => "index"
         else
             redirect_to :action => "new"
         end

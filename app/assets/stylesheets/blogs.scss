@@ -2,50 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .header-blog-new {
-    background-color: #ddd;
     height: 10vh;
-    width: 100%;
-    font-weight: normal;
-    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
-        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
-    font-weight: bold;
-
-    ul {
-        margin: .5%;
-        background-color: #fff;
-        display: flex;
-        justify-content: space-between;
-
-        li {
-            line-height: 10vh;
-        }
-
-        li:first-of-type {
-            margin-left: 3%;
-        }
-
-        li:nth-of-type(2) {
-            height: 10vh;
-            border-bottom: 5px solid #d37800;
-            color: #d37800;
-            width: 13.5vw;
-            margin-left: 5%;
-
-            .far {
-                padding-right: 4%;
-                padding-left: 2%;
-
-            }
-        }
-
-        li:nth-of-type(3) {
-            margin-right: 3%;
-        }
-    }
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 0 0 5px 5px #aaa;
 }
-
 .blogs-container {
-    background-color: #ddd;
+    margin-top: 1%;
     display: flex;
     font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
         ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
@@ -96,50 +59,14 @@
 }
 
 .header-blog-index {
-    background-color: #ddd;
     height: 10vh;
-    width: 100%;
-    font-weight: normal;
-    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
-        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
-    font-weight: bold;
-
-    ul {
-        margin: .5%;
-        background-color: #fff;
-        display: flex;
-        justify-content: space-between;
-
-        li {
-            line-height: 10vh;
-        }
-
-        li:first-of-type {
-            margin-left: 3%;
-        }
-
-        li:nth-of-type(2) {
-            height: 10vh;
-            border-bottom: 5px solid #d37800;
-            color: #d37800;
-            width: 10.5vw;
-            margin-left: 5%;
-
-            .far {
-                padding-right: 4%;
-                padding-left: 2%;
-
-            }
-        }
-
-        li:nth-of-type(3) {
-            margin-right: 3%;
-        }
-    }
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 0 0 5px 5px #aaa;
 }
 
 .blogs-container {
-    background-color: #ddd;
+    margin-top: 1%;
     display: flex;
     font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
         ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
@@ -198,7 +125,9 @@
                     padding-left: 2%;
                 }
 
-                img {
+                .icon {
+                    width: 50px;
+                    height: 50px;
                     border-radius: 50%;
                 }
             }
@@ -257,7 +186,9 @@
 
             .blog-self-box1 {
                 display: flex;
-                img {
+                .icon {
+                    width: 50px;
+                    height: 50px;
                     border-radius: 50%;
                     margin: .5vh 0 0 .5vw;
                 }
@@ -278,5 +209,85 @@
                 }
             }
         }
+    }
+}
+
+
+.blog-edit {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 3px 3px #ddd;
+    display: table;
+    margin: 3% auto;
+    background-color: #fff;
+    border-radius: 2%;
+    width: 50%;
+    font-weight: normal;
+
+    h2 {
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 3% 5%;
+        color: #d37800;
+        border-bottom: 5px solid #d37800;
+        margin: 0 0 5% 3%;
+    }
+
+    .blog-label {
+        outline: none;
+        display: inline-block;
+        font-size: 1.2rem;
+        border-left: 5px solid #d37800;
+        padding: 1% 0 1% 3%;
+        margin: 1%;
+    }
+
+    .blog-part {
+        width: 45vw;
+    }
+
+    .blog-field {
+        width: 45vw;
+        height: 5vh;
+    }
+
+    #blog_part {
+        width: 10vw;
+        height: 5vh;
+    }
+
+    #blog_part:focus {
+        border: #d37800 2px solid;
+    }
+
+    .submit {
+        width: 235px;
+        height: 50px;
+        border-radius: 12% / 50%;
+        border: #d37800 solid 1px;
+        background-color: #d37800;
+        margin: 10% auto;
+        display: table;
+
+        .submit-text {
+            border: none;
+            background-color: #d37800;
+            color: #fff;
+            font-weight: bold;
+            line-height: 50px;
+            display: table;
+            font-size: 1.3rem;
+            margin: 0 auto;
+            height: 40px;
+        }
+    }
+
+    .submit:hover {
+        opacity: .9;
+    }
+
+    .blog-field:focus {
+        border: #d37800 3px solid;
+        outline: none;
     }
 }

@@ -1,1 +1,223 @@
-/* No CSS *//*# sourceMappingURL=rooms.css.map */
+@charset "UTF-8";
+.header-page {
+  height: 10vh;
+  background-color: #fff;
+  border-bottom: 1px solid #aaa;
+  -webkit-box-shadow: 0 0 5px 5px #aaa;
+          box-shadow: 0 0 5px 5px #aaa;
+}
+
+.header-page h1 {
+  display: inline-block;
+  margin-left: 1%;
+  width: 10vw;
+  padding: 10px;
+  height: 9vh;
+  border-radius: 10%;
+  font-family: 'Vidaloka', serif;
+  text-align: center;
+  font-weight: normal;
+  color: #666;
+  border: #eee;
+  margin-top: 3px;
+}
+
+.header-page h1:hover {
+  background-color: #eee;
+}
+
+.header-page .maintitle {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  letter-spacing: -3px;
+  text-shadow: -1px -1px #222, 1px 1px #aaa;
+}
+
+.header-page .description {
+  padding-top: 3%;
+  display: block;
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: 1px;
+  text-shadow: -1px -1px #222, 1px 1px #aaa;
+}
+
+.room-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+}
+
+.room-container .room-show-left {
+  width: 30vw;
+  height: 90vh;
+  font-weight: bold;
+  font-size: 1.4rem;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+}
+
+.room-container .room-show-left .far {
+  padding: 0 3%;
+}
+
+.room-container .room-show-left .fas {
+  padding: 0 3%;
+}
+
+.room-container .room-show-left li:first-of-type {
+  padding-top: 15%;
+}
+
+.room-container .room-show-left li {
+  margin: 10% 0;
+}
+
+.room-container .room-show-center {
+  height: 90vh;
+  width: 75%;
+  overflow: scroll;
+}
+
+.room-container .room-show-center .message-field {
+  width: 45vw;
+  margin-left: 3%;
+  height: 5.5vh;
+  outline: none;
+  border: none;
+  border: #ddd 1px solid;
+  border-radius: 2% / 50%;
+  font-size: 1.1rem;
+}
+
+.room-container .room-show-center .message-field:focus {
+  border: 2px solid #eb997b;
+}
+
+.room-container .room-show-center .message-button {
+  width: 7vw;
+  height: 40px;
+  border: #d37800 solid 1px;
+  background-color: #d37800;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 12% / 50%;
+}
+
+.room-container .room-show-center .message-button:hover {
+  opacity: .9;
+}
+
+.room-container .room-show-center .talking-partner {
+  display: inline-block;
+  padding-left: 17%;
+}
+
+.room-container .room-show-center .talking-partner .talk-self {
+  padding-top: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+.room-container .room-show-center .talking-partner .talk-self .icon {
+  margin-right: 3px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.room-container .room-show-center .talking-partner .talk-self span {
+  font-weight: normal;
+}
+
+.room-container .room-show-center .my-talk {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1% 0;
+}
+
+.room-container .room-show-center .my-talk .my-user .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.room-container .room-show-center .my-says {
+  display: inline-block;
+  position: relative;
+  padding: 25px 12px;
+  margin-left: 3%;
+  border-radius: 12px;
+  background: #90e993;
+}
+
+.room-container .room-show-center .my-says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #90e993;
+}
+
+.room-container .room-show-center .my-says p {
+  margin: 0;
+  padding: 0;
+}
+
+.room-container .room-show-center .other-talk {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 1% 0;
+}
+
+.room-container .room-show-center .other-user .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.room-container .room-show-center .other-says {
+  display: inline-block;
+  position: relative;
+  padding: 25px 12px;
+  margin-right: 3%;
+  border-radius: 12px;
+  background: #d7ebfe;
+}
+
+.room-container .room-show-center .other-says:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #e0edff;
+}
+
+.room-container .room-show-center .other-says p {
+  margin: 0;
+  padding: 0;
+}
+
+.room-container .room-show-center .mutual-talk {
+  border: 1px solid #eee;
+  width: 45vw;
+  height: 70vh;
+  overflow: scroll;
+  margin: 3% 0 0 10%;
+  background-color: #eee;
+  border-radius: 3%;
+}
+/*# sourceMappingURL=rooms.css.map */

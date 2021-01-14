@@ -1,26 +1,89 @@
-<h1>DM</h1>
+<link rel="stylesheet" href="stylesheets/rooms.css">
 
-<h4>参加者</h4>
-<% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-<% end %>
 
-<hr>
-<% if @messages.present? %>
-  <% @messages.each do |m| %>
-    <strong><%= m.content %></strong>
-    <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
+<div class="header-page" data-turbolinks="false">
+  <h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span
+        class="description">Home Trainee</span></a></h1>
+</div>
 
-<%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
+<div class="room-container">
+  <div class="room-show-left">
+    <li><i class="far fa-comment-alt"></i><%= link_to "おすすめ投稿一覧", tweets_path %></li>
+    <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
+    <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
+    <li><i class="far fa-address-card"></i><%= link_to "プロフィール", user_path(current_user.id) %></li>
+    <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
+    <li><i class="fas fa-dumbbell"></i><%= link_to "体型診断", new_person_path %></li>
+  </div>
+  <div class="room-show-center">
 
-<%= link_to "ユーザー一覧に戻る", users_path %>
+    <ul class="talking-partner">
+      <% @other_entry.each do |t| %>
+      <div class="talk-self">
+        <% if t.user.image? %>
+        <li><img src='<%= t.user.image %>' class="icon" , size: "50x50" alt="ユーザーアイコン"></li>
+        <% else %>
+        <li>
+          <image src="/assets/8.png" class="icon" , size: "50x50" alt="ユーザーアイコン" %>
+        </li>
+        <% end %>
+        <li><a href="/users/<%= t.user.id %>"><%= t.user.name%>さん<span>とチャットをしています。</span></a></li>
+      </div>
+      <% end %>
+    </ul>
+
+    <%= form_for @message do |f| %>
+    <%= f.text_field :content, :placeholder => "メッセージを入力" , :size => 70, class:"message-field" %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
+    <%= f.submit "送信", class:"message-button" %>
+    <% end %>
+    <div class="mutual-talk">
+      <% if @other_message.present? %>
+      <% @other_message.each do |m| %>
+      <div class="other-talk">
+        <div class="other-says">
+          <p><%= m.content %></p>
+        </div>
+        <div class="other-user">
+          <% if m.user.image? %>
+          <p><img src='<%= m.user.image %>' class="icon" , size: "50x50" alt="ユーザーアイコン">
+            <p>
+              <% else %>
+              <p>
+                <image src="/assets/8.png" class="icon" , size: "50x50" alt="ユーザーアイコン" %>
+              </p>
+              <% end %>
+              <p><a href="/users/<%= m.user_id %>"><%= m.user.name %></a></p>
+        </div>
+      </div>
+
+      <% end %>
+      <% end %>
+
+
+      <% if @my_message.present? %>
+      <% @my_message.each do |m| %>
+      <div class="my-talk">
+        <div class="my-user">
+          <% if m.user.image? %>
+          <p><img src='<%= m.user.image %>' class="icon" , size: "50x50" alt="ユーザーアイコン"></p>
+          <% else %>
+          <p>
+            <image src="/assets/8.png" class="icon" , size: "50x50" alt="ユーザーアイコン" %>
+          </p>
+          <% end %>
+          <p><a href="/users/<%= m.user_id %>"><%= m.user.name %></a></p>
+        </div>
+        <div class="my-says">
+          <p><%= m.content %></p>
+        </div>
+      </div>
+
+      <% end %>
+      <% end %>
+    </div>
+
+
+  </div>
+
+</div>

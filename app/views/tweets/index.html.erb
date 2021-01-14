@@ -2,12 +2,9 @@
 <%= javascript_pack_tag 'script' %>
 
 
-<div class="header-tweet-index">
-    <ul>
-        <li><%= link_to "マイページ", front_path(id: current_user) %></li>
-        <li><i class="far fa-comment-alt"></i>おすすめ投稿一覧</li>
-        <li><%= link_to "マイページ", front_path(id: current_user) %></li>
-    </ul>
+<div class="header-page" data-turbolinks="false">
+    <h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span
+                class="description">Home Trainee</span></a></h1>
 </div>
 
 <div class="modal1" id="modal1">
@@ -63,16 +60,19 @@
         <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
         <li><i class="far fa-address-card"></i><%= link_to "プロフィール", user_path(current_user.id) %></li>
         <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
-        <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
-        <li><a class="modal3-open" id="modal3-open">おすすめ投稿</a></li>
+        <li><i class="fas fa-dumbbell"></i><%= link_to "体型診断", new_person_path %></li>
     </div>
     <div class="tweet-center">
         <% @tweets.each do |t| %>
         <div class="tweet">
             <ul class="top-tweet">
-                <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
-                <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
-                <li><%= t.created_at %></li>
+                <% if t.user.image? %>
+                <li><img src='<%= t.user.image %>' class="icon", size: "50x50" alt="ユーザーアイコン"></li>
+                <% else %>
+                <li><image src="/assets/8.png" class="icon", size: "50x50" alt="ユーザーアイコン" %></li>
+                    <% end %>
+                    <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
+                    <li><%= t.created_at %></li>
             </ul>
             <ul class="detail-tweet">
                 <li class="title">おすすめ内容</li>
@@ -100,7 +100,7 @@
                 <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
                 <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
-                <i class="fas fa-heart"></i><%= t.likes.count %>
+                <i class="fas fa-heart red-heart"></i><span class="red-count"><%= t.likes.count %></span>
                 <% end %>
                 <% else %>
                 <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
@@ -111,10 +111,7 @@
                 <i class="fas fa-heart"></i><%= t.likes.count %>
                 <% end %>
                 <ul>
-                    <li><%= link_to  tweet_path(t.id) do %>
-                        <i class="far fa-eye"></i>
-                        <% end %>
-                    </li>
+ 
                     <% if user_signed_in? && current_user.id == t.user_id %>
                     <li><%= link_to edit_tweet_path(t.id) do   %>
                         <i class="far fa-edit"></i>
@@ -138,7 +135,11 @@
         <% @tweets.each do |t| %>
         <div class="rank-tweet">
             <ul class="rank-tweet-box1">
-                <li><%= image_tag t.user.image_url, size: "50x50" if t.user.image? %> </li>
+                <% if t.user.image? %>
+                <li><img src='<%= t.user.image %>' class="icon", size: "50x50" alt="ユーザーアイコン"></li>
+                <% else %>
+                <li><image src="/assets/8.png" class="icon", size: "50x50" alt="ユーザーアイコン" %></li>
+                    <% end %>
                 <li><a href="/users/<%= t.user.id %>"><%= t.user.name %></a></li>
             </ul>
             <ul class="rank-tweet-box2">
@@ -150,7 +151,7 @@
                 <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
                 <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
-                <i class="fas fa-heart"></i><%= t.likes.count %>
+                <i class="fas fa-heart red-heart"></i><span class="red-count"><%= t.likes.count %></span>
                 <% end %>
                 <% else %>
                 <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
@@ -160,10 +161,7 @@
                 <% else %>
                 <li><i class="fas fa-heart"></i><%= t.likes.count %></li>
                 <% end %>
-                <li><%= link_to  tweet_path(t.id) do %>
-                    <i class="far fa-eye"></i>
-                    <% end %>
-                </li>
+
                 <% if user_signed_in? && current_user.id == t.user_id %>
                 <li><%= link_to edit_tweet_path(t.id) do   %>
                     <i class="far fa-edit"></i>

@@ -1,12 +1,15 @@
 @charset "UTF-8";
 .header-fronts {
-  background-color: #eee;
+  background-color: #fff;
   z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
   height: 10vh;
   width: 100%;
+  border-bottom: 1px solid #aaa;
+  -webkit-box-shadow: 0 0 5px 5px #aaa;
+          box-shadow: 0 0 5px 5px #aaa;
 }
 
 .header-fronts .header-fronts-right .menubutton {
@@ -22,7 +25,7 @@
 .header-fronts .header-fronts-right .menubutton div {
   height: 2px;
   width: 100%;
-  background-color: red;
+  background-color: #d37800;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -43,7 +46,7 @@
 }
 
 .header-fronts .header-fronts-right .menubutton.active {
-  background-color: #222;
+  background-color: #fff;
   z-index: 3;
 }
 
@@ -68,7 +71,7 @@
 .menu.active {
   display: block;
   position: fixed;
-  background-color: #555;
+  background-color: #fff;
   opacity: .9;
   top: 0;
   left: 0;
@@ -200,6 +203,7 @@
 }
 
 .modal1 .tweet-new-center .modal1-top h2 {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 1.5rem;
   color: #d37800;
   border-bottom: 2px solid #d37800;
@@ -267,6 +271,7 @@
   font-size: 1.3rem;
   margin: 0 auto;
   height: 40px;
+  outline: none;
 }
 
 .modal1 .tweet-new-center .submit:hover {
@@ -275,6 +280,7 @@
 
 .modal1 .tweet-new-center .tweet-field:focus {
   border-bottom: #d37800 2px solid;
+  outline: none;
 }
 
 .mask1 {
@@ -334,6 +340,7 @@
 }
 
 .modal2 .blog-new .modal2-top h2 {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 1.5rem;
   color: #d37800;
   border-bottom: 2px solid #d37800;
@@ -400,6 +407,7 @@
   font-size: 1.3rem;
   margin: 0 auto;
   height: 40px;
+  outline: none;
 }
 
 .modal2 .blog-new .submit:hover {
@@ -448,9 +456,7 @@
 .front-center .front-blog {
   height: 80vh;
   overflow: scroll;
-  background-color: #eee;
   margin: 0.1%;
-  margin-top: 12vh;
   width: 30vw;
 }
 
@@ -504,6 +510,10 @@
   margin-bottom: 2%;
 }
 
+.front-center .front-blog .front-blog-self .front-blog-self-box3 .far {
+  padding-left: 5px;
+}
+
 .front-center .front-blog .front-blog-self .front-blog-detail {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -515,6 +525,7 @@
 }
 
 .front-blog {
+  border: 1px solid #ddd;
   background-color: #fff;
   margin: .5%;
   width: 25%;
@@ -528,6 +539,7 @@
   padding: 5% 0 5% 3%;
   display: table;
   border-bottom: 1px solid #ddd;
+  font-weight: normal;
 }
 
 .front-blog .front-blog-self {
@@ -539,5 +551,33 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.fronts-weight {
+  border: 1px solid #ddd;
+  width: 95vw;
+  display: inline-block;
+  margin-left: 2.5vw;
+  margin-top: 15vh;
+  font-weight: normal;
+}
+
+.fronts-weight h1 {
+  border-bottom: 1px solid #ddd;
+  display: table;
+  font-size: 1.5rem;
+  width: 20vw;
+  margin: 3% auto 2% auto;
+  padding: 0 0 10px 3%;
+  font-weight: normal;
+  font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka, ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+}
+
+.red-heart {
+  color: red;
+}
+
+.red-count {
+  color: red;
 }
 /*# sourceMappingURL=fronts.css.map */

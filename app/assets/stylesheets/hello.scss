@@ -76,6 +76,7 @@
     .menu-box1 {
         opacity: 1;
         visibility: visible;
+    font-family: 'Vollkorn', serif;
 
     li {
         font-size: 30px;
@@ -83,6 +84,7 @@
         display: table;
         cursor: pointer;
         padding-left: 3vw;
+        font-size: 2.5rem;
         }
         li:hover {
             opacity: .5;
@@ -90,6 +92,8 @@
         }
     }
     .menu-box2 {
+    font-family: 'Vollkorn', serif;
+
         opacity: 1;
         visibility: visible;
         li {
@@ -97,6 +101,8 @@
             padding-bottom: 10px;
             cursor: pointer;
             padding-left: 3vw;
+            color: #fff;
+            font-size: 1.5rem;
         }
         li:hover {
             opacity: .5;
@@ -119,6 +125,7 @@
             font-size: 30px;
             padding-bottom: 20px;
             display: table;
+            color: #fff;
             padding-left: 3vh;
         }
         }
@@ -289,8 +296,20 @@
     .flex-target {
         display: flex;
         padding: 10vh 0;
+        .fas {
+            padding-right: 2%;
+        }
+        .far {
+            padding-right: 2%;
+        }
         .text {
             padding-top: 15vh;
+        }
+        img {
+            border-radius: 5%;
+        }
+        h2 {
+            padding-bottom: 5%;
         }
     }
     .flex-target:nth-child(odd) {
@@ -303,10 +322,10 @@
     }
     .flex-target:nth-child(even) {
         .text {
-            padding-left: 5vw;
+            padding-left: 8vw;
         }
         img {
-            margin-left: 5vw;
+            margin-left: 8vw;
         }
     }
 }

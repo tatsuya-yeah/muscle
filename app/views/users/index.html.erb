@@ -2,13 +2,8 @@
 
 
 
-<div class="header-user-index">
-  <ul>
-    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
-    <li><i class="far fa-user"></i>おうちトレーニー</li>
-    <li><%= link_to "マイページ", front_path(id: current_user) %></li>
-
-  </ul>
+<div class="header-page" data-turbolinks="false">
+<h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span class="description">Home Trainee</span></a></h1>
 </div>
 
 <div class="users-container">
@@ -18,13 +13,13 @@
     <li><i class="far fa-comment-alt"></i><%= link_to "筋トレ記録一覧", blogs_path %></li>
     <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
     <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
-    <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+    <li><i class="fas fa-dumbbell"></i><%= link_to "体型診断", new_person_path %></li>
   </div>
 
   <div class="user-index-center">
     <div class="search-wrapper">
       <% if user_signed_in? %>
-      <h3>おうちトレーニーを検索</h3>
+      <h3>おうちトレーニーを探す</h3>
       <div class="search-box">
         <%= form_tag({controller:"users",action:"index"}, method: :get) do %>
         <%= text_field_tag :search, "", class: 'search-field', placeholder:"検索..." %>
@@ -35,7 +30,11 @@
     <div class="user-wrapper">
       <% @users.each do |u| %>
       <div class="user-self-wrapper">
-        <li><%= image_tag u.image_url, size: "50x50" if u.image? %> </li>
+      <% if u.image? %>
+      <li><img src='<%= u.image %>' class="icon", size: "50x50" alt="ユーザーアイコン"></li>
+      <% else %>
+      <li><image src="/assets/8.png" class="icon", size: "50x50" alt="ユーザーアイコン" %></li>
+          <% end %>
         <p><a href="/users/<%= u.id %>"><%= u.name %></a></p>
       </div>
       <% end %>

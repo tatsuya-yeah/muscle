@@ -10,7 +10,7 @@ class PersonsController < ApplicationController
     def show
         @person = Person.find(params[:id])
         @BMI = (@person.weight.to_f * 10000/ @person.height.to_f ** 2)
-        @my_BMI = @BMI.round(1)
+        @my_BMI = @BMI.round(1) 
     end
 
     def new
@@ -21,7 +21,6 @@ class PersonsController < ApplicationController
         @person = Person.new(person_params)
         @person.user_id = current_user.id
         if @person.save
-            flash[:notice] = ''
             redirect_to :action => "show", :id => @person.id
         else 
             redirect_to :action => "new"
@@ -31,7 +30,7 @@ class PersonsController < ApplicationController
     private
 
     def person_params
-        params.require(:person).permit(:height, :weight, :name)
+        params.require(:person).permit(:height, :weight, :name, :fat)
     end
 
 

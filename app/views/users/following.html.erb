@@ -1,0 +1,26 @@
+<div class="header-page" data-turbolinks="false">
+    <h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span
+                class="description">Home Trainee</span></a></h1>
+</div>
+
+<div class="back-profile">
+    <li><%= link_to "プロフィールに戻る", user_path(@user.id) %></li>
+</div>
+
+<div class="following-box">
+    <h1><%= @user.name %>さんのフォロー</h1>
+
+    <% @user.followings.each do |t| %>
+    <div class="following-user">
+
+        <% if t.image? %>
+        <li><img src='<%= t.image %>' class="icon" , size: "50x50" alt="ユーザーアイコン"></li>
+        <% else %>
+        <li>
+            <image src="/assets/8.png" class="icon" , size: "50x50" alt="ユーザーアイコン" %>
+        </li>
+        <% end %>
+        <li class="following-name"><a href="/users/<%= t.id %>"><%= t.name %></a></li>
+    </div>
+    <% end %>
+</div>

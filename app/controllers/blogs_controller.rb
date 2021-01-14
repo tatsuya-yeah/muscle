@@ -17,7 +17,6 @@ class BlogsController < ApplicationController
         blog.user_id = current_user.id
         
         if blog.save
-            flash[:notice] = '投稿が完了しました。'
             redirect_to :action => "index"
         else 
             redirect_to :action => "new"
@@ -33,17 +32,19 @@ class BlogsController < ApplicationController
     def destroy
         blog = Blog.find(params[:id])
         blog.destroy
-        redirect_to blogs_path, notice:"削除しました"
+        redirect_to blogs_path
     end
     
     def edit
         @blog = Blog.find(params[:id])
+        @user = User.find(params[:id])
+
     end
     
     def update
         blog = Blog.find(params[:id])
         if blog.update(blog_parameter)
-            redirect_to :action => "show", :id => blog.id
+            redirect_to :action => "index"
         else
             redirect_to :action => "new"
         end

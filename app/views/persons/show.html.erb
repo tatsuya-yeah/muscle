@@ -1,8 +1,44 @@
-<p><%= @person.height %></p>
-<p><%= @person.weight %></p>
+<div class="header-page" data-turbolinks="false">
+<h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span class="description">Home Trainee</span></a></h1>
 
-<p>あなたのBMIは<%= @my_BMI %>です</p>
+</div>
+<div class="person-show">
+    <h2>体型診断結果</h2>
+    <div class="person-show-text">
+        <p>あなたは<%= @person.height %>cm、<%= @person.weight %>kgです。</p>
+        <p>あなたの体脂肪率は<%= @person.fat.round(1) %>％です。</p>
+        <p>あなたのBMI計算の結果は<%= @my_BMI %>です。</p>
+    </div>
 
 
 
-<%= link_to "マイページへ", front_path(id: current_user) %>
+    <div class="if-body">
+        <% if 8 < @person.fat && @person.fat < 15 && 20 < @my_BMI && @my_BMI < 24  %>
+        <p class="judge">この結果からあなたは<span>マッチョ</span>です。</p>
+        <div class="person-speak">
+            <img src="/assets/traps-2746488_1920.jpg" alt="マッチョの写真" >
+            <div class="speech-bubble">
+                <p>この調子で筋トレを頑張りましょう！</p>
+            </div>
+        </div>
+        <% elsif 8 > @person.fat && @my_BMI < 20 %>
+        <p class="judge">この結果からあなたは<span>痩せています。</span></p>
+        .
+        <div class="person-speak">
+            <img src="/assets/christopher-campbell-SaQxt8rdLq4-unsplash.jpg" alt="痩せている人の写真" >
+            <div class="speech-bubble">
+                <p>もっと食べましょう<br>！！！！！！！！！</p>
+            </div>
+        </div>
+        <% else %>
+        <p class="judge">この結果からあなたは<span>太っています。</span></p>
+        <div class="person-speak">
+            <img src="/assets/allgo-an-app-for-plus-size-people-P2bRIeW_X5Q-unsplash.jpg" alt="太っている人の写真">
+            <div class="speech-bubble">
+                <p>筋トレして、食事制限して下さい。</p>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+</div>

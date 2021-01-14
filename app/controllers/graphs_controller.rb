@@ -3,7 +3,6 @@ class GraphsController < ApplicationController
     def index
         @graphs = Graph.all
         @result = Graph.pluck(:weigh_on, :weight)
-        @my_result = @result.select{ |graph| graph.user_id == current_user.id }
     end
 
     def show
@@ -19,8 +18,7 @@ class GraphsController < ApplicationController
         graph.user_id = current_user.id
         
         if graph.save
-            flash[:notice] = '体重管理が完了しました。'
-            redirect_to :action => "index"
+            redirect_to controller: :fronts, action: :show, id: current_user.id
         else 
             redirect_to :action => "new"
         end
@@ -29,7 +27,7 @@ class GraphsController < ApplicationController
     def destroy
         graph = Graph.find(params[:id])
         graph.destroy
-        redirect_to graphs_path, notice:"削除しました"
+        redirect_to graphs_path
     end
     
     def edit

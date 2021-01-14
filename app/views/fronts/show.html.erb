@@ -10,6 +10,12 @@
             <div></div>
         </a>
     </div>
+    <div class="header-fronts-left">
+        <div class="header-page" data-turbolinks="false">
+            <h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span
+                        class="description">Home Trainee</span></a></h1>
+        </div>
+    </div>
 
     <div class="menu" id="menu">
         <ul class="fronts-menu-box1">
@@ -18,12 +24,12 @@
             <li><%= link_to "おうちトレーニー", users_path %></li>
             <li><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
             <li><%= link_to "体重管理", new_graph_path %></li>
-            <li><%= link_to "マッチョ診断", new_person_path %></li>
+            <li><%= link_to "体型診断", new_person_path %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         </ul>
         <ul class="fronts-menu-box2">
             <li><a class="modal1-open" id="modal1-open">おすすめ投稿</a></li>
-            <li><a class="modal2-open" id="modal2-open">今日の筋トレを投稿</a></li>
+            <li><a class="modal2-open" id="modal2-open">今日の筋トレを記録</a></li>
         </ul>
     </div>
 </div>
@@ -43,9 +49,12 @@
         <div class="field">
             <%= f.label :部位, class:"tweet-label tweet-part" %>
             <%= f.select :part,
-        [["腹筋", "腹筋"],
-        ["肩", "肩"],
-        ["背中", "背中"]], include_blank: "選択して下さい" %>
+            [["肩", "肩"],
+            ["腕", "腕"],
+            ["腹筋", "腹筋"],
+            ["胸筋", "胸筋"],
+            ["背中", "背中"],
+            ["足", "足"]], include_blank: "選択して下さい" %>
 
         </div>
         <div class="field">
@@ -84,8 +93,12 @@
         <div class="field">
             <%= f.label :部位, class:"blog-label blog-part" %>
             <%= f.select :part,
-            [["腹筋", "腹筋"],
-            ["肩", "肩"]], include_blank: "選択して下さい" %>
+            [["肩", "肩"],
+            ["腕", "腕"],
+            ["腹筋", "腹筋"],
+            ["胸筋", "胸筋"],
+            ["背中", "背中"],
+            ["足", "足"]], include_blank: "選択して下さい" %>
         </div>
 
         <div class="field">
@@ -113,8 +126,12 @@
 
 <div class="mask2" id="mask2"></div>
 
-
-
+<div class="fronts-weight">
+    <h1>あなたの体重推移</h1>
+    <div class="weight-graph">
+        <%= line_chart @result, xtitle: "日付", ytitle: "体重",max:100  %>
+    </div>
+</div>
 
 <div class="front-center">
     <div class="calendar">
@@ -129,7 +146,6 @@
         <% end %>
     </div>
 
-    <p id="notice"><%= notice %></p>
 
     <div class="front-blog">
         <h2>あなたの最近の筋トレ記録</h2>
@@ -148,7 +164,7 @@
                 <% if user_signed_in? %>
                 <% if current_user.already_loved?(t) %>
                 <%= link_to blog_love_path(id: t.id, blog_id: t.id), method: :delete do %>
-                <i class="fas fa-heart"></i><%= t.loves.count %>
+                <i class="fas fa-heart red-heart"></i><span class="red-count"><%= t.loves.count %></span>
                 <% end %>
                 <% else %>
                 <%= link_to blog_loves_path(id: t.id, blog_id: t.id), method: :post do %>
@@ -158,10 +174,6 @@
                 <% else %>
                 <li><i class="fas fa-heart"></i><%= t.loves.count %></li>
                 <% end %>
-                <li><%= link_to  blog_path(t.id) do %>
-                    <i class="far fa-eye"></i>
-                    <% end %>
-                </li>
                 <% if user_signed_in? && current_user.id == t.user_id %>
                 <li><%= link_to edit_blog_path(t.id) do   %>
                     <i class="far fa-edit"></i>
@@ -178,9 +190,7 @@
     </div>
 </div>
 
-<h1>あなたの体重推移</h1>
 
-<%= line_chart @my_result, xtitle: "日付", ytitle: "体重",max:100 %>
 
 
 <%= javascript_pack_tag 'script' %>

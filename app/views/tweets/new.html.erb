@@ -19,7 +19,7 @@
         <li><i class="far fa-user"></i><%= link_to "おうちトレーニー", users_path %></li>
         <li><i class="far fa-address-card"></i><%= link_to "マイプロフィール", user_path(current_user.id) %></li>
         <li><i class="far fa-edit"></i><%= link_to "体重管理", new_graph_path %></li>
-        <li><i class="fas fa-dumbbell"></i><%= link_to "マッチョ診断", new_person_path %></li>
+        <li><i class="fas fa-dumbbell"></i><%= link_to "体型診断", new_person_path %></li>
     </div>
     <div class="tweet-new-center">
         <h2>おすすめ投稿</h2>
@@ -73,7 +73,7 @@
                 <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
                 <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
-                <i class="fas fa-heart"></i><%= t.likes.count %>
+                <i class="fas fa-heart red-heart"></i><span class="red-count"><%= t.likes.count %></span>
                 <% end %>
                 <% else %>
                 <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
@@ -83,10 +83,7 @@
                 <% else %>
                 <li><i class="fas fa-heart"></i><%= t.likes.count %></li>
                 <% end %>
-                <li><%= link_to  tweet_path(t.id) do %>
-                    <i class="far fa-eye"></i>
-                    <% end %>
-                </li>
+
                 <% if user_signed_in? && current_user.id == t.user_id %>
                 <li><%= link_to edit_tweet_path(t.id) do   %>
                     <i class="far fa-edit"></i>

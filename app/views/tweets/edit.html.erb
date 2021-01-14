@@ -1,21 +1,42 @@
-<h1>投稿編集</h1>
-<%= form_for @tweet do |f| %>
-<div class="field">
-    <%= f.label :タイトル %>
-    <%= f.text_field :title, :size => 30 %>
-</div>
+<div class="header-page" data-turbolinks="false">
+    <h1><a href="/fronts/<%= current_user.id %>"><span class="maintitle">The Strongest</span><span class="description">Home Trainee</span></a></h1>
 
-<div class="field">
-    <%= f.label :部位 %>
-    <%= f.text_field :part, :size => 30 %>
 </div>
-<div class="field">
-    <%= f.label :種目 %>
-    <%= f.text_field :training, :size => 30 %>
-</div>
-<div class="field">
-    <%= f.label :内容 %>
-    <%= f.text_field :about, :size => 30 %>
-</div>
-<%= f.submit "編集する" %>
-<% end %>
+    <div class="tweet-edit">
+        <h2>おすすめ投稿編集</h2>
+        <%= form_for @tweet do |f| %>
+        <div class="field">
+            <%= f.label :タイトル, class:"tweet-label" %>
+            <%= f.text_field :title, :size => 30, class:"tweet-field" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :部位, class:"tweet-label tweet-part" %>
+            <%= f.select :part,
+    [["腹筋", "腹筋"],
+    ["肩", "肩"],
+    ["背中", "背中"]], include_blank: "選択して下さい" %>
+
+        </div>
+        <div class="field">
+            <%= f.label :種目, class:"tweet-label" %>
+            <%= f.text_field :training, :size => 30, class:"tweet-field" %>
+        </div>
+        <div class="field">
+            <%= f.label :内容, class:"tweet-label" %>
+            <%= f.text_field :about, :size => 30, class:"tweet-field" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :画像, class:"tweet-label" %>
+            <%= f.file_field :image %>
+        </div>
+        <div class="field">
+            <%= f.label :YouTube, class:"tweet-label" %>
+            <%= f.url_field :youtube_url, :size => 100, class:"tweet-field"  %>
+        </div>
+        <div class="submit">
+            <%= f.submit "編集する", class:"submit-text" %>
+            <% end %>
+        </div>
+    </div>

@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="blog">
 <p>
     <strong>ユーザー名</strong>
@@ -23,7 +22,7 @@
 <% if user_signed_in? %>
 <% if current_user.already_loved?(@blog) %>
     <%= link_to blog_love_path(@blog), method: :delete do %>
-        <i class="fas fa-heart"></i><%= @blog.loves.count %>
+        <i class="fas fa-heart red-heart"></i><span class="red-count"><%= @blog.loves.count %></span>
     <% end %>
 <% else %>
     <%= link_to blog_loves_path(@blog), method: :post do %>

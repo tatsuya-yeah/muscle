@@ -1,3 +1,223 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.header-page {
+    height: 10vh;
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 0 0 5px 5px #aaa;
+
+    h1 {
+        display: inline-block;
+        margin-left: 1%;
+        width: 10vw;
+        padding: 10px;
+        height: 9vh;
+        border-radius: 10%;
+        font-family: 'Vidaloka', serif;
+        text-align: center;
+        font-weight: normal;
+        color: #666;
+        border: #eee;
+        margin-top: 3px;
+    }
+
+    h1:hover {
+        background-color: #eee;
+    }
+
+    .maintitle {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        letter-spacing: -3px;
+        text-shadow: -1px -1px #222, 1px 1px #aaa;
+    }
+
+    .description {
+        padding-top: 3%;
+        display: block;
+        font-size: 1rem;
+        line-height: 1rem;
+        letter-spacing: 1px;
+        text-shadow: -1px -1px #222, 1px 1px #aaa;
+    }
+}
+
+.room-container {
+    display: flex;
+    font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+        ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+
+    .room-show-left {
+        width: 30vw;
+        height: 90vh;
+        font-weight: bold;
+        font-size: 1.4rem;
+        font-family: Arial, ”ヒラギノ角ゴ Pro W3″, ”Hiragino Kaku Gothic Pro”, Osaka,
+            ”メイリオ”, Meiryo, ”ＭＳ Ｐゴシック”, ”MS PGothic”, sans-serif;
+    
+        .far {
+            padding: 0 3%;
+        }
+    
+        .fas {
+            padding: 0 3%;
+        }
+    
+        li:first-of-type {
+            padding-top: 15%;
+    
+        }
+    
+        li {
+            margin: 10% 0;
+        }
+
+    }
+
+    .room-show-center {
+        height: 90vh;
+        width: 75%;
+        overflow: scroll;
+
+
+        .message-field {
+            width: 45vw;
+            margin-left: 3%;
+            height: 5.5vh;
+            outline: none;
+            border: none;
+            border: #ddd 1px solid;
+            border-radius: 2% / 50%;
+            font-size: 1.1rem;
+        }
+
+        .message-field:focus {
+            border: 2px solid #eb997b;
+        }
+
+        .message-button {
+            width: 7vw;
+            height: 40px;
+            border: #d37800 solid 1px;
+            background-color: #d37800;
+            color: #fff;
+            font-size: 1.2rem;
+            border-radius: 12% / 50%;
+        }
+
+        .message-button:hover {
+            opacity: .9;
+        }
+
+        .talking-partner {
+            display: inline-block;
+            padding-left: 17%;
+
+            .talk-self {
+                padding-top: 10%;
+                display: flex;
+                font-weight: bold;
+                line-height: 50px;
+
+                .icon {
+                    margin-right: 3px;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                }
+
+                span {
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .my-talk {
+            display: flex;
+            margin: 1% 0;
+
+            .my-user {
+                .icon {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .my-says {
+            display: inline-block;
+            position: relative;
+            padding: 25px 12px;
+            margin-left: 3%;
+            border-radius: 12px;
+            background:  #90e993;
+        }
+
+        .my-says:after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 18px;
+            left: -24px;
+            border: 12px solid transparent;
+            border-right: 12px solid #90e993;
+        }
+
+        .my-says p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .other-talk {
+            display: flex;
+            justify-content: flex-end;
+            margin: 1% 0;
+
+        }
+        .other-user {
+
+            .icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        }
+
+        .other-says {
+            display: inline-block;
+            position: relative;
+            padding: 25px 12px;
+            margin-right: 3%;
+            border-radius: 12px;
+            background: #d7ebfe;
+        }
+
+        .other-says:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-top: -15px;
+            border: 15px solid transparent;
+            border-left: 15px solid #e0edff;
+        }
+
+        .other-says p {
+            margin: 0;
+            padding: 0;
+        }
+        .mutual-talk {
+            border: 1px solid #eee;
+            width: 45vw;
+            height: 70vh;
+            overflow: scroll;
+            margin: 3% 0 0 10%;
+            background-color: #eee;
+            border-radius: 3%;
+        }
+    }
+}
